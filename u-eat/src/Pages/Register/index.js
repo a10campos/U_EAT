@@ -1,3 +1,4 @@
+import {Link, Routes, Route, useNavigate} from 'react-router-dom';
 
 
 //agregar use states para poder guardar el input del usuario
@@ -10,6 +11,7 @@
 //hacer que el boton haga algo y mandar el post
 
 export default function Register() {
+    const navigate = useNavigate();
     return (
         //<div style={{height: '100vh', background: 'red'}}/>
         //<div className= "h-100 bg-theBlue"> Register</div>
@@ -110,8 +112,10 @@ export default function Register() {
                     */
                     }}
                 >
-                    Iniciar Sesión
+                    Registrarse
                 </button>
+
+                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-theYellow text-white text-lg font-bold" onClick={() => navigate(-1)}>Go back 1 Page</button>
 
             </div>
         </div>

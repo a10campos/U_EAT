@@ -6,9 +6,16 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        theBlue: '#0b3c5d',
-        theYellow: '#d9b310',
-      },
+        projectBlue: '#0b3c5d',
+        projectmustard: '#d9b310',
+
+        //De Aaron
+        colorBotonGris: "#fffefe",
+        fondoPrincipal: "#0B3C5D",
+        fondoBotonesA:"#D9B310",
+        fondoBotonG:"#e5e4e4",
+        colorTextoAzul:"#1D2731",
+      }
     },
   },
   plugins: [],

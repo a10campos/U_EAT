@@ -1,7 +1,7 @@
 import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+function Home({
 
-
-function Home() {
+}){
     return (
     <h1 className="text-3xl font-bold underline">
       Hello world!
@@ -16,7 +16,5 @@ function Home() {
         </div>
     </h1>
     );
-
 }
-
 export default Home;

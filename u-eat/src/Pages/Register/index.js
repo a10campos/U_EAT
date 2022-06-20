@@ -16,7 +16,7 @@ export default function Register() {
         //<div style={{height: '100vh', background: 'red'}}/>
         //<div className= "h-100 bg-theBlue"> Register</div>
         //<div className= " bg-theBlue" style={{height: '100vh'}}> Register</div> SIRVE
-        <div className= " flex items-center justify-center h-screen bg-theBlue">
+        <div className= " flex items-center justify-center h-screen bg-projectBlue">
             <div className="text-center w-screen">
                 <div className=" mb-20">
                     <h1 className="text-3xl font-bold text-white">Registro</h1>
@@ -89,7 +89,7 @@ export default function Register() {
                     />
                 </div>
 
-                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-theYellow text-white text-lg font-bold"
+                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectmustard text-white text-lg font-bold"
                     onClick={() => {
                         /*
                         if (username && password) {
@@ -115,7 +115,7 @@ export default function Register() {
                     Registrarse
                 </button>
 
-                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-theYellow text-white text-lg font-bold" onClick={() => navigate(-1)}>Go back 1 Page</button>
+                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectmustard text-white text-lg font-bold" onClick={() => navigate(-1)}>Go back 1 Page</button>
 
             </div>
         </div>

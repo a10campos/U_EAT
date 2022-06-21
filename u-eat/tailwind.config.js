@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       colors:{
         projectBlue: '#0b3c5d',
-        projectmustard: '#d9b310',
+        projectMustard: '#d9b310',
+        projectBlack: '#1d2731',
 
         //De Aaron
         colorBotonGris: "#fffefe",

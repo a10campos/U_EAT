@@ -6,6 +6,9 @@ import RestaurantInfo from "../RestaurantInfo";
 import Login from "../Login"
 import Perfil from "../Perfil"
 import RegisterRest from "../RegisterRest";
+import MainPage from "../MainPage";
+import Review from "../Review";
+import Location from "../Location";
 
 export default function App() {
 
@@ -20,6 +23,9 @@ export default function App() {
         <Route path="/Login" element={<Login/>}/>
         <Route path="/Perfil" element={<Perfil/>}></Route>
         <Route path ="RegisterRest" element={<RegisterRest/>}></Route>
+        <Route path ="MainPage" element={<MainPage/>}></Route>
+        <Route path ="Review" element={<Review/>}></Route>
+        <Route path ="Location" element={<Location/>}></Route>
       </Routes>
   </BrowserRouter>
 );

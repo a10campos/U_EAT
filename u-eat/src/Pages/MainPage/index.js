@@ -43,12 +43,12 @@ const restaurants = [
   ]
 
   
-  export default function Home() {
+  export default function MainPage() {
       return (
-        <div class="h-screen font-sans">
+        <div class="h-screen font-sans text-projectBlack">
             <div class="flex h-16 w-screen items-center justify-center">    
                 <div class="my-5">
-                    <p class ="text-4xl font-semibold tracking-widest text-projectBlack"> U EAT </p> 
+                    <p class ="text-4xl font-semibold tracking-widest"> U EAT </p> 
                 </div>
                 {/* TODO: Revisar esto */}
                 {/* <div class="my-5">
@@ -59,8 +59,8 @@ const restaurants = [
                 </div>   */}
             </div>
   
-            <div class="flex w-screen justify-center">
-                <button class=" bg-projectMustard hover:bg-yellow-600 text-white font-bold text-xl pl-4 h-[48px] w-7/12 sm:w-96 rounded-md">
+            <div class="flex w-screen justify-center mt-4">
+                <button class="bg-projectMustard text-white font-bold text-xl pl-4 h-[48px] w-7/12 sm:w-96 rounded-md">
                 Filtrar restaurantes
                 </button>
             </div>
@@ -72,8 +72,8 @@ const restaurants = [
                     <div class="flex ml-4 w-screen items-center">
                         {/* <div key={`restaurant_${i.id}`}> */}
                         <img src={i.photo} alt={i.name} class="object-contain h-44 w-44"/>
-                        <div class= "text-xl text-projectBlack ml-4" >
-                            <p class="text-2xl font-bold text-projectBlack">{i.name}</p>
+                        <div class= "text-xl ml-4" >
+                            <p class="text-2xl font-bold">{i.name}</p>
                             <p> A {i.distance} metros</p> 
                             <p> ₡{i.lowerPrice} - ₡{i.higherPrice}</p> 
                         </div>    

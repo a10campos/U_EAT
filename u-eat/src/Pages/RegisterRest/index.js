@@ -1,4 +1,7 @@
 import Select from "react-select";
+import Buttons from "../../Component/Buttons";
+import InputButton from "../../Component/InputButtons";
+import InputText from "../../Component/InputText";
 const options = [
     {value:"Rapida", label:"Rapida"},
     {value:"Mexicana", label:"Mexicana"},
@@ -13,46 +16,33 @@ function RegisterRest({
 }) {
     return(
         <> 
-            <div className="flex items-center justify-center bg-fondoPrincipal">
+            <div className="flex items-center justify-center bg-fondoPrincipal h-screen">
                 <div className="text-center">
-                    <h1 className="text-xl mt-10 mb-5 text-white">Registrar Restaurante</h1>
+                    <h1 className="text-2xl mt-10 mb-5 text-white"><b>Registrar <br></br>Restaurante</b></h1>
                     <div>
-                        <input
-                        placeholder="Nombre del restaurante"
-                        className="rounded-md text-fondoPrincipal p-2 mb-3"
-                        ></input>
+                        <InputText placeHolder = "Nombre del resturante"/>
                     </div>
                     <div>
-                        <input
-                        placeholder="Correo"
-                        className="rounded-md text-fondoPrincipal p-2 mb-3"
-                        ></input>
+                        <InputText placeHolder = "Correo"/>
                     </div>
                     <div>
-                        <input
-                        placeholder="Telefono" type ="tel"
-                        className="rounded-md text-fondoPrincipal p-2 mb-3"
-                        ></input>
+                        <InputText placeHolder = "Telefono" Type="Tel"/>
                     </div>
-                    <Select
-                    className="mb-3"
-                    closeMenuOnSelect={false}
+                    <Select className="mt-2" closeMenuOnSelect={false}
                     isMulti
                     options={options}/>
                     <div>
-                        <input className="rounded-md text-fondoPrincipal p-2 mb-3" placeholder = "Horarios"></input>
+                        <InputText placeHolder = "Horarios"/>
                     </div>
                     <div>
-                        <input className="rounded-md text-fondoPrincipal p-2 mb-3"placeholder = "Rango Precios"></input>
+                        <InputText placeHolder = "Rango Precios"/>
                     </div>
-                    <div className="mb-3 ">
-                        <button className="bg-colorBotonGris w-full h-[48px] rounded-md">Agregar Menu</button>
+                    <div>
+                        <InputButton buttonColor="white" textButton ="Agregar Menu"/>
                     </div>
-                    <div className="mb-3">
-                        <button className="bg-colorBotonGris w-full h-[48px] rounded-md">Agregar Foto</button>
-                    </div>
-                    <div className="mb-15">
-                            <button className="bg-fondoBotonesA w-full h-[48px] rounded-md"> Registrar</button>
+                        <InputButton buttonColor="white" textButton ="Agregar Foto"/>
+                    <div>
+                        <Buttons text="Registrar"/>
                     </div>
                 </div>
             </div>

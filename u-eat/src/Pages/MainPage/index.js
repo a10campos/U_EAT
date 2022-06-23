@@ -1,3 +1,4 @@
+import Header from "../../Components/Header"
 const restaurants = [
     {
       id: 1,
@@ -41,48 +42,38 @@ const restaurants = [
 }
 
   ]
-
-  
+ 
   export default function MainPage() {
       return (
-        <div class="h-screen font-sans text-projectBlack">
-            <div class="flex h-16 w-screen items-center justify-center">    
-                <div class="my-5">
-                    <p class ="text-4xl font-semibold tracking-widest"> U EAT </p> 
-                </div>
-                {/* TODO: Revisar esto */}
-                {/* <div class="my-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 cursor-pointer" viewBox="0 0 20 20" fill="#0b3c5d">
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546
-                        2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
-                    </svg>
-                </div>   */}
-            </div>
-  
-            <div class="flex w-screen justify-center mt-4">
-                <button class="bg-projectMustard text-white font-bold text-xl pl-4 h-[48px] w-7/12 sm:w-96 rounded-md">
-                Filtrar restaurantes
-                </button>
-            </div>
-        
-            <div class="mt-4">
-                {
-                restaurants.map((i) => {
-                    return (
-                    <div class="flex ml-4 w-screen items-center">
-                        {/* <div key={`restaurant_${i.id}`}> */}
-                        <img src={i.photo} alt={i.name} class="object-contain h-44 w-44"/>
-                        <div class= "text-xl ml-4" >
-                            <p class="text-2xl font-bold">{i.name}</p>
+        <div>
+          <Header></Header>
+          <div className="h-screen font-sans text-projectBlack">
+              <div className="flex w-screen justify-center mt-4">
+                  <button className="bg-projectMustard text-white font-bold text-xl pl-4 h-[48px] w-7/12 sm:w-96 rounded-md">
+                  Filtrar restaurantes
+                  </button>
+              </div>
+          
+              <div className="mt-4">
+                  {
+                  restaurants.map((i) => {
+                      return (
+                      <div className="ml-4 w-screen items-center flex">
+                        <img src={i.photo} alt={i.name} className="object-contain h-44 w-44"/>  
+                        <div key={`restaurant_${i.id}`}>
+                          <div className= "text-xl ml-4" >
+                            <p className="text-2xl font-bold">{i.name}</p>
                             <p> A {i.distance} metros</p> 
                             <p> ₡{i.lowerPrice} - ₡{i.higherPrice}</p> 
-                        </div>    
-                    </div>
-                    // </div>
-                    )
-                    })
-                }
-            </div>
-        </div>      
+                          </div>    
+                          
+                        </div>
+                     </div>
+                      )
+                      })
+                  }
+              </div>
+          </div>   
+        </div>   
       )
   }

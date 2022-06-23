@@ -21,21 +21,21 @@ function Location() {
 
     return (
         <>
-           <div className= "items-center justify-center h-screen bg-projectBlue">
+           <div classNameName= "items-center justify-center h-screen bg-projectBlue">
             <div>
-                    <img class=" h-[300px] w-[300px] m-10"src="https://i.postimg.cc/PJ0RkZqJ/logo512.png" alt="logo"/>
+                    <img className=" h-[300px] w-[300px] m-10"src="https://i.postimg.cc/PJ0RkZqJ/logo512.png" alt="logo"/>
                 </div>
-                <div class="mx-10 my-3">
+                <div className="mx-10 my-3">
                     <Select  closeMenuOnSelect={false}  options={countries}/>
                 </div>
-                <div class="mx-10 my-3">
+                <div className="mx-10 my-3">
                     <Select closeMenuOnSelect={false}  options={states}/>
                 </div>
-                <div class="mx-10 my-3">
+                <div className="mx-10 my-3">
                     <Select closeMenuOnSelect={false}  options={universities}/>
                 </div>
-                <div class="mx-10 my-3">
-                    <button className="bg-projectMustard text-white text-xl font-bold rounded-md h-[48px] w-full mt-5 mb-10">
+                <div className="mx-10 my-3">
+                    <button classNameName="bg-projectMustard text-white text-xl font-bold rounded-md h-[48px] w-full mt-5 mb-10">
                         Aceptar
                     </button>
                 </div>

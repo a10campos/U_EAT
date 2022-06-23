@@ -1,4 +1,4 @@
-import Header from "../../Components/Header"
+import Header from "../../Component/Header"
 import {useEffect, useState} from "react";
 
 const restaurants = [

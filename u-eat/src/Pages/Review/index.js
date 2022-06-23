@@ -1,4 +1,4 @@
-import Header from "../../Components/Header"
+import Header from "../../Component/Header"
 
   export default function Review() {
       return (

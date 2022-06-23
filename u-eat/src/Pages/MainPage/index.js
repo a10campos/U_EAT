@@ -1,4 +1,6 @@
 import Header from "../../Components/Header"
+import {useEffect, useState} from "react";
+
 const restaurants = [
     {
       id: 1,
@@ -44,7 +46,18 @@ const restaurants = [
   ]
  
   export default function MainPage() {
-      return (
+    const [_restaurants, setRestaurants] = useState([]);
+
+    useEffect (()=> {
+      const fetchRestaurants = async () => {
+        //const restaurantsFetch = await fetch("https://api.myapp.com/restaurants");
+        //const restaurantsJSON = await restaurantsFetch.json(); 
+        setRestaurants([
+
+        ]);
+      }
+    })
+    return (
         <div>
           <Header></Header>
           <div className="h-screen font-sans text-projectBlack">

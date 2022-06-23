@@ -1,0 +1,16 @@
+[
+    {
+        "id":1,
+        "nombre":"Carreta",
+        "correo":"carreta.com",
+        "telefono":"45637833",
+        "rangoPrecios": "3000 - 5500"
+    },
+    {
+        "id":2,
+        "nombre":"Carreta2",
+        "correo":"carreta2.com",
+        "telefono":"45635833",
+        "rangoPrecios": "3300 - 5000"
+    }
+]

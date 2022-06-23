@@ -18,7 +18,7 @@ function RegisterRest({
         <> 
             <div className="flex items-center justify-center bg-fondoPrincipal h-screen">
                 <div className="text-center">
-                    <h1 className="text-2xl mt-10 mb-5 text-white"><b>Registrar <br></br>Restaurante</b></h1>
+                    <h1 className="text-4xl mt-10 mb-5 text-white"><b>Registrar <br></br>Restaurante</b></h1>
                     <div>
                         <InputText placeHolder = "Nombre del resturante"/>
                     </div>
@@ -38,9 +38,9 @@ function RegisterRest({
                         <InputText placeHolder = "Rango Precios"/>
                     </div>
                     <div>
-                        <InputButton buttonColor="white" textButton ="Agregar Menu"/>
+                        <InputButton buttonColor="bg-white" textButton ="Agregar Menu"/>
                     </div>
-                        <InputButton buttonColor="white" textButton ="Agregar Foto"/>
+                        <InputButton buttonColor="bg-white" textButton ="Agregar Foto"/>
                     <div>
                         <Buttons text="Registrar"/>
                     </div>

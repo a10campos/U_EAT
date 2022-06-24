@@ -1,28 +1,27 @@
-import UserInfoCard from "../../Component/Home/UserInfoCard";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {} from '@fortawesome/free-solid-svg-icons';
-function Perfil ({
-
-}){
+import Buttons from "../../Component/Buttons";
+import UserInfoCard from "../../Component/UserInfoCard";
+import {BsFillExclamationCircleFill} from "react-icons/bs"
+function Perfil (){
     return(
         <>
             <UserInfoCard/>
             <div className="flex items-center justify-center">
                 <div className="text-center">
                     <div>
-                        <button className="bg-fondoBotonG w-full h-[48px] p-23 m-2 text-colorTextoAzul rounded-md">Informacion de la cuenta</button>
+                        <Buttons colorB="bg-fondoBotonG" text="Informacion de la cuenta"/>
                     </div>
                     <div>
-                        <button className="bg-fondoBotonG w-full h-[48px] p-2 m-2 rounded-md">Cambiar Ubicacion</button>
+                        <Buttons colorB="bg-fondoBotonG" text="Cambiar Ubicacion"/>
                     </div>
                     <div>
-                    <button className="bg-fondoBotonG w-full h-[48px] p-2 m-2 rounded-md">Agregar Restaurante</button>
+                        <Buttons colorB="bg-fondoBotonG" text="Agregar Restaurante"/>
                     </div>
-                    
-                    <button className="bg-fondoBotonG w-full h-[48px] p-2 m-2 rounded-md">Salir</button>
+                    <Buttons colorB="bg-fondoBotonG" text="Salir"/>
                 </div>
             </div>
+                <button className="flex items-center "><BsFillExclamationCircleFill className="mr-2"/>Informacion </button>
         </>
+
     );
 }
 export default Perfil;

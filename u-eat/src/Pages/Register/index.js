@@ -89,7 +89,7 @@ export default function Register() {
                     />
                 </div>
 
-                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectmustard text-white text-lg font-bold"
+                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
                     onClick={() => {
                         /*
                         if (username && password) {
@@ -114,9 +114,6 @@ export default function Register() {
                 >
                     Registrarse
                 </button>
-
-                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectmustard text-white text-lg font-bold" onClick={() => navigate(-1)}>Go back 1 Page</button>
-
             </div>
         </div>
     )

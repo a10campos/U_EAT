@@ -6,7 +6,6 @@ import RegisterRest from "../RegisterRest";
 
 
 function App() {
-
   return(
 
   <BrowserRouter>

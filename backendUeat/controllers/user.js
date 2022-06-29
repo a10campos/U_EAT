@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const users = require('../example.json');
 const underscore = require("underscore");
 exports.loginUser = (req,res) => {
@@ -8,7 +9,14 @@ exports.loginUser = (req,res) => {
         if (userPayload.email == user.email && userPayload.password == user.password){
             console.log("Se encontro");
             encontro=true;
-            res.status(204).send();
+            const token = jwt.sign(
+                {userEmail:user.email},process.env.JWT_KEY
+            );
+            const result = {
+                ...user,
+                token,
+            };
+            res.json(result);
             return;
         }
     });

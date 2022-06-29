@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 const users = require('../example.json');
 const underscore = require("underscore");
 exports.loginUser = (req,res) => {
@@ -14,9 +13,9 @@ exports.loginUser = (req,res) => {
                 {userEmail:user.email},process.env.JWT_KEY
             );
             const result = {
-                //...user.email.toJSON(),
+                ...user,
                 token,
-            }
+            };
             res.json(result);
             return;
         }

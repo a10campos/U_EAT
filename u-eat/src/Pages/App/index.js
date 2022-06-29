@@ -1,4 +1,5 @@
 import {BrowserRouter,Route,Routes} from "react-router-dom";
+import PrivateRoute from "../../Component/PrivateRoute";
 import Home from "../Home";
 import Login from "../Login"
 import Perfil from "../Perfil"
@@ -12,8 +13,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/Login" element={<Login/>}/>
-        <Route path="/Perfil" element={<Perfil/>}></Route>
-        <Route path ="RegisterRest" element={<RegisterRest/>}></Route>
+        <Route element={<PrivateRoute/> }>
+          <Route path ="RegisterRest" element={<RegisterRest/>}></Route>
+          <Route path="/Perfil" element={<Perfil/>}></Route>
+        </Route>
       </Routes>
   </BrowserRouter>
 );

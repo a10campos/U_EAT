@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const users = require('../example.json');
 const underscore = require("underscore");
+
+
 exports.loginUser = (req,res) => {
     var encontro = false;
     const userPayload = req.body;

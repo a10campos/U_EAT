@@ -7,6 +7,7 @@ exports.userIsAutenticated = async (req, res, next) => {
             try{
                 const decrytedToken = jwt.verify(token,process.env.JWT_KEY);
                 const user = {"email":"a10campos","password":"ueat123"};
+                console.log(user.email);
                 if (!user) {
                     res.status(401).json({
                         error:true,

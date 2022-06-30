@@ -1,3 +1,5 @@
+const { calculateNewValue } = require('@testing-library/user-event/dist/utils');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -17,7 +19,7 @@ module.exports = {
         fondoBotonG:"#e5e4e4",
         colorTextoAzul:"#1D2731",
       }
-    },
+    }
   },
   plugins: [],
 }

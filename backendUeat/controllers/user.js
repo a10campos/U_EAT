@@ -9,7 +9,6 @@ exports.loginUser = (req,res) => {
 
     underscore.each(users,(user,i) => {
         if (userPayload.email == user.email && userPayload.password == user.password){
-            console.log("Se encontro");
             encontro=true;
             const token = jwt.sign(
                 {userEmail:user.email},process.env.JWT_KEY
@@ -19,6 +18,7 @@ exports.loginUser = (req,res) => {
                 token,
             };
             res.json(result);
+            console.log(token);
             return;
         }
     });

@@ -6,8 +6,8 @@ import {Navigate} from "react-router-dom";
 import {postLogin,logout} from "../../Slices/userSlice";
 function Login() {
 
-    //const [username,setUsername] = useState ("");
-    //const [password, setPassword] = useState ("");
+    const [username,setUsername] = useState ("");
+    const [password, setPassword] = useState ("");
 
     const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
     const dispatch = useDispatch();
@@ -25,11 +25,11 @@ function Login() {
                 < div className ="text-center">
                     <img alt =" Logo app" className=" h-[300px] w-[300px] ml-10 mr-10 mb-3"src="https://i.postimg.cc/PJ0RkZqJ/logo512.png"/>
                     <div className="">
-                        <InputText placeHolder ="Correo" Type="email"></InputText>
+                        <InputText placeHolder ="Correo" Type="email" values={username}  fOnChange = {(evt) => {setUsername(evt.target.value);}}></InputText>
                     </div>
 
                     <div>
-                        <InputText placeHolder ="Contraseña" Type="password"></InputText>
+                        <InputText placeHolder ="Contraseña" Type="password" value={password} fOnChange = {(evt) => {setPassword(evt.target.value);}}></InputText>
                     </div >
                         <div className="mb-5">
                             <Buttons text="Ingresar"/>
@@ -39,7 +39,7 @@ function Login() {
                         <p>¿No se ha registrado? Registrate aqui</p>
                         <button className="bg-fondoBotonesA p-5 text-black mt-5"
                         onClick={()=> { dispatch(postLogin({
-
+                            username,password
                         }));}}
                         >Esto es una prueba</button>
                     </div>

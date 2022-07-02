@@ -25,7 +25,7 @@ const userSlice = createSlice({
             }
         })
         .addCase(postLogin.rejected,(state,action ) => {
-            state.userIsLoggedIn = true;
+            state.userIsLoggedIn = false;
         })
     }
 
@@ -40,10 +40,21 @@ export const postLogin = createAsyncThunk('user/postLogin', async (credentils) =
             "Content-type": "application/json"
         },
         body: JSON.stringify({
-            email: "a10campos",//credentils.email,
-            password: "ueat123"//credentils.password
+            email:credentils.username,
+            password:credentils.password
         })
     });
+    alert(credentils.username);
+    alert(credentils.password);
+    const userData = await loginfetch.json();
+    if (loginfetch.status === 200){
+        return userData;
+    } else {
+        return {
+            error: true,
+            message: userData.error.message
+        }
+    }
 })
 
 export default userSlice.reducer;

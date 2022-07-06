@@ -1,6 +1,5 @@
 import Header from "../../Component/Header"
 import Buttons from "../../Component/Buttons";
-import ReactStars from "react-rating-stars-component";
 
 const ratingChanged = (newRating) => {
   console.log(newRating);
@@ -24,7 +23,6 @@ const ratingChanged = (newRating) => {
             </div>
 
             <div className ="flex justify-center text-center mx-12 my-8">
-              <ReactStars count={5} onChange={ratingChanged} size={56} activeColor="#d9b310"/>
               </div>
 
             

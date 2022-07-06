@@ -1,7 +1,6 @@
 import Header from "../../Component/Header"
 import Buttons from "../../Component/Buttons";
 import {useEffect, useState} from "react";
-import ReactStars from "react-rating-stars-component";
 import {Link} from "react-router-dom"
 
 const restaurants = require('../../restaurants.json');
@@ -39,7 +38,6 @@ const restaurants = require('../../restaurants.json');
                             <p className="text-2xl font-bold">{i.name}</p>
                             <p> A {i.distance} metros</p> 
                             <p> ₡{i.lowerPrice} - ₡{i.higherPrice}</p> 
-                              <ReactStars count={5} size={32} activeColor="#d9b310"/>
                           </div>      
                         </div>
                      </div>

@@ -27,21 +27,21 @@ export default function Carousel() {
             <div class="carousel-inner relative w-full overflow-hidden">
                 <div class="carousel-item active float-left w-full">
                 <img
-                    src="https://scontent.fsjo12-1.fna.fbcdn.net/v/t39.30808-6/275224983_1428153190975430_5051048601328576157_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e3f864&_nc_ohc=7pzR68lQJWkAX-xqVao&_nc_ht=scontent.fsjo12-1.fna&oh=00_AT_9N5r24ky7g7LTm3lQMAxRSOAwlPOomV7ZJ5EOpCas3Q&oe=62C30D81"
+                    src="https://scontent.fsjo12-1.fna.fbcdn.net/v/t1.6435-9/82459783_877303626060392_859594484038500352_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=e3f864&_nc_ohc=xvJ78AlGiesAX-wVYUj&_nc_ht=scontent.fsjo12-1.fna&oh=00_AT830fT9VEr3JsZAp3Bj1cKZ3BGDdvDcexpILAw4wd4KNw&oe=62E4D678"
                     class="block w-full h-44 md:h-72 object-cover"
                     alt="Logo"
                 />
                 </div>
                 <div class="carousel-item float-left w-full">
                 <img
-                    src="https://scontent.fsjo12-1.fna.fbcdn.net/v/t45.1600-4/277706576_23849970071600234_7372234779732740692_n.jpg?stp=cp0_dst-jpg_p403x403_q75_spS444&_nc_cat=110&ccb=1-7&_nc_sid=67cdda&_nc_ohc=ocD6_D0ddqkAX8FUmPy&_nc_ht=scontent.fsjo12-1.fna&oh=00_AT8LX5mVu_fsvcn1II03qKxiNenl7BycytjRO2dX3ah-VA&oe=62C3AFE7"
+                    src="https://www.tusegurodeviaje.net/wp-content/uploads/2020/04/Chifrijo-3.jpg"
                     class="block w-full h-44 md:h-72 object-cover"
                     alt="Chifrijo"
                 />
                 </div>
                 <div class="carousel-item float-left w-full">
                 <img
-                    src="https://scontent.fsjo12-1.fna.fbcdn.net/v/t1.6435-9/82459783_877303626060392_859594484038500352_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=e3f864&_nc_ohc=xvJ78AlGiesAX-wVYUj&_nc_ht=scontent.fsjo12-1.fna&oh=00_AT830fT9VEr3JsZAp3Bj1cKZ3BGDdvDcexpILAw4wd4KNw&oe=62E4D678"
+                    src="https://d1lofqbqbj927c.cloudfront.net/monumental/2022/06/IMG_1431sized_0.jpg"
                     class="block w-full h-44 md:h-72 object-cover"
                     alt="Encuentranos"
                 />

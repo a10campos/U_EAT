@@ -26,7 +26,7 @@ export default function App() {
         <Route element={<PrivateRoute/> }>
           <Route path ="RegisterRest" element={<RegisterRest/>}></Route>
           <Route path="/Perfil" element={<Perfil />}></Route>
-          <Route path="restaurant_info" element={<RestaurantInfo />} />
+          <Route path ="Review" element={<Review/>}></Route>
         </Route>
       </Routes>
   </BrowserRouter>

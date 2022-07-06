@@ -1,25 +1,21 @@
 const restaurants = require('../restaurant.json');
 const underscore = require("underscore");
-const fs = require('fs');
 const { sendWelcomeEmail } = require('../services/mailService');
 
 exports.registRest = async (req,res) => {
-    const {nombre, correo,telefono,rangoPrecios} = req.body;
-    if (nombre && correo && telefono && rangoPrecios) {
+    const {name, email,phone,rangePrice} = req.body;
+    if (name && email && phone && rangePrice) {
         const id = restaurants.length+1;
         const newRestaurant = {id,...req.body};
         restaurants.push(newRestaurant);
         console.log(restaurants);
 
         const newrest = JSON.stringify(newRestaurant)
-        //fs.writeFile(restaurants, newrest, (err) => {
-        //console.log(restaurants);
-        await sendWelcomeEmail(correo,nombre);
+       // await sendWelcomeEmail(email,name);
         res.status(204).send();
-        //}
     }
     else {
-        res.status(401).send("Faltan campos por completar");
+        res.status(401).json({message:"Faltan campos por completar "});
     }
 
 };

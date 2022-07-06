@@ -10,11 +10,12 @@ function Login() {
     const [password, setPassword] = useState ("");
 
     const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
+    const errorMessage = useSelector((state) => state.user.errorMessage);
     const dispatch = useDispatch();
 
     return userIsLoggedIn ? (
         <>
-            <h2>Ya esta loggeado</h2>
+            <Navigate to = "/MainPage"/>
 
             <button className="bg-fondoBotonesA"
             onClick= {()=>dispatch (logout())}>Salir</button>
@@ -29,19 +30,18 @@ function Login() {
                     </div>
 
                     <div>
-                        <InputText placeHolder ="Contraseña" Type="password" value={password} fOnChange = {(evt) => {setPassword(evt.target.value);}}></InputText>
+                        <InputText placeHolder ="Contraseña" Type="password" values={password} fOnChange = {(evt) => {setPassword(evt.target.value);}}></InputText>
                     </div >
-                        <div className="mb-5">
-                            <Buttons text="Ingresar"/>
+                        {errorMessage && (<p className="text-white mt-2">{errorMessage}</p>)}
+                        <div className="mb-5 ml-auto mr-auto">
+                            <Buttons colorB="bg-fondoBotonesA "text="Ingresar"
+                            onClick={()=> { dispatch(postLogin({
+                                username,password
+                            }));}}/>
                         </div>
                     <div className="text-white ">
                         <p className="mb-2">¿Olvido su Contraseña?</p>
                         <p>¿No se ha registrado? Registrate aqui</p>
-                        <button className="bg-fondoBotonesA p-5 text-black mt-5"
-                        onClick={()=> { dispatch(postLogin({
-                            username,password
-                        }));}}
-                        >Esto es una prueba</button>
                     </div>
                 </div>
             </div>

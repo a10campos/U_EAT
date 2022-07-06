@@ -11,18 +11,18 @@ exports.loginUser = (req,res) => {
         if (userPayload.email == user.email && userPayload.password == user.password){
             encontro=true;
             const token = jwt.sign(
-                {userEmail:user.email},process.env.JWT_KEY
+                {userId:user.id,userEmail:user.email},process.env.JWT_KEY
             );
             const result = {
                 ...user,
                 token,
             };
-            res.json(result);
             console.log(token);
+            res.json(result);
             return;
         }
     });
     if (encontro == false) {
-        res.status(401).send("Credenciales invalidos");
+        res.status(404).json({message:"Credenciales invalidos "});
     }
 } ;

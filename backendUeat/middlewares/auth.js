@@ -1,4 +1,7 @@
 const jwt = require ("jsonwebtoken");
+const {searchUser } = require("../models.js");
+const users = require('../example.json');
+const underscore = require("underscore");
 
 exports.userIsAutenticated = async (req, res, next) => {
     if (req.headers && req.headers.authorization){
@@ -6,12 +9,16 @@ exports.userIsAutenticated = async (req, res, next) => {
         if (token) {
             try{
                 const decrytedToken = jwt.verify(token,process.env.JWT_KEY);
-                const user = {"email":"a10campos","password":"ueat123"};
-                console.log(user.email);
+                var user = false;
+                underscore.each(users,(OneUser,i) => {
+                    if (decrytedToken.userEmail == OneUser.email){
+                        user = true;
+                    }
+                })
                 if (!user) {
                     res.status(401).json({
                         error:true,
-                        message:"Credenciales invalidas"
+                        message:"Credenciales invalidos"
                     });
                 }
                 else {
@@ -22,7 +29,7 @@ exports.userIsAutenticated = async (req, res, next) => {
             catch{
                 res.status(401).json({
                     error:true,
-                    message: "Credenciales invalidas"
+                    message: "Usuario sin autorizacion"
                 });
             }
         }

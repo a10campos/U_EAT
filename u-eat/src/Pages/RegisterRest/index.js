@@ -33,7 +33,7 @@ function RegisterRest({
                         <InputText placeHolder = "Nombre del resturante" values={nameRest} fOnChange={(evt) => {setNameRest(evt.target.value);}}/>
                     </div>
                     <div>
-                        <InputText placeHolder = "Correo" values={email}  values={email} fOnChange={(evt) => {setEmail(evt.target.value);}}/>
+                        <InputText placeHolder = "Correo" values={email} fOnChange={(evt) => {setEmail(evt.target.value);}}/>
                     </div>
                     <div>
                         <InputText placeHolder = "Telefono" Type="Tel"  values={celRest} fOnChange={(evt) => {setCelRest(evt.target.value);}}/>

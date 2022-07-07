@@ -8,7 +8,10 @@ import Perfil from "../Perfil"
 import RegisterRest from "../RegisterRest";
 import MainPage from "../MainPage";
 import Review from "../Review";
+import ReviewSent from "../ReviewSent";
 import Location from "../Location";
+
+
 
 export default function App() {
 
@@ -27,6 +30,7 @@ export default function App() {
           <Route path ="RegisterRest" element={<RegisterRest/>}></Route>
           <Route path="/Perfil" element={<Perfil />}></Route>
           <Route path ="Review" element={<Review/>}></Route>
+          <Route path ="ReviewSent" element={<ReviewSent/>}></Route>
         </Route>
       </Routes>
   </BrowserRouter>

@@ -4,7 +4,7 @@ import {useDispatch,useSelector} from "react-redux";
 import Buttons from "../../Component/Buttons";
 import InputButton from "../../Component/InputButtons";
 import InputText from "../../Component/InputText";
-import {registRest} from "../../Slices/userSlice";
+import {registRest} from "../../Slices/restaurantSlice";
 
 const options = [
     {value:"Rapida", label:"Rapida"},

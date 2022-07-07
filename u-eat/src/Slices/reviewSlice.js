@@ -1,32 +1,24 @@
-import {createAsyncThunk} from  "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from  "@reduxjs/toolkit";
 
-export const postReview = createAsyncThunk('review/postReview', async (reviewInfo) => {
-    const reviewFetch = await fetch('http://localhost:7500/review',{
-        method:'POST',
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-            points:reviewInfo.points,
-            details:reviewInfo.details,
-            userId:reviewInfo.userId
+const reviewSlice = createSlice({
+    name: 'review',
+    extraReducers (builder) {
+        builder
+        .addCase(sendReview.fulfilled,(state,action)=>{
+            if (action.payload.error) {
+                state.errorMessage = action.payload.message;
+            }
+            else {
+                state.errorMessage="";
+                state.success=true;
+            }
         })
-    });
-
-    const reviewData = await reviewFetch.json();
-    if (reviewFetch.status === 200){
-        return reviewData;
-    } else {
-        return {
-            error: true,
-            message: reviewData.message
-        }
     }
-})
+});
 
 export const sendReview = createAsyncThunk('review/sendReview',async(reviewInfo,{getState})=> {
     const state = getState();
-    const sendReviewFetch = await fetch ('http://localhost:7500/review',{
+    const sendReviewFetch = await fetch ('http://localhost:7500/sendReview',{
         method:'POST',
         headers: {
             Authorization: `Bearer ${state.user.user.token}`,
@@ -52,3 +44,5 @@ export const sendReview = createAsyncThunk('review/sendReview',async(reviewInfo,
         }
     }
 })
+
+export default reviewSlice.reducer;

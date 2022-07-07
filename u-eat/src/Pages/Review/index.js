@@ -1,13 +1,17 @@
 import Header from "../../Component/Header";
+import Buttons from "../../Component/Buttons";
 import {sendReview} from "../../Slices/reviewSlice";
 
 import { useState } from "react";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+
 
   export default function Review() {
 
     const [points,setPoints] = useState ("");
     const [details,setDetails] = useState ("");
+    const navigate = useNavigate();
 
 
     const dispatch = useDispatch();
@@ -35,7 +39,7 @@ import {useDispatch} from "react-redux";
                 label="Ingrese un número del 1 al 5"               
                 className="px-4 h-[40px] sm:w-96 rounded-md border border-projectBlue"
                 value={points}
-                onChange={(evt) =>  {setPoints(evt.target.value);}}
+                onChange={(evt) => {setPoints(evt.target.value);}}
                 
               />          
             </div>
@@ -53,12 +57,9 @@ import {useDispatch} from "react-redux";
             </div>
 
             <div className="flex justify-center text-center my-8">
-              <button
-                className=" mt-14 h-[48px] w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
-                onClick={()=> { dispatch(sendReview({points, details}));}}
-              >
-                Enviar reseña
-              </button>
+                   <Buttons text="Enviar reseña"
+                   onClick={()=> { dispatch(sendReview({points, details}))
+                   ;navigate("/ReviewSent")}}/>
             </div>
         </div>
       </>

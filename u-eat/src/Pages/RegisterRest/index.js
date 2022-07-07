@@ -16,13 +16,25 @@ const options = [
 ];
 function RegisterRest({
 }) {
-
+    const [productPicture,setProductPicture] = useState(null);
+    const [product, setProduct] = useState({
+        name: "",
+        description:"",
+        price:0,
+        picture: "",
+    })
     const [nameRest,setNameRest] = useState ("");
     const [email,setEmail] = useState ("");
     const [celRest,setCelRest] = useState ("");
     const [rangePrice,setRangePrice] = useState ("");
     const errorMessage = useSelector((state) => state.user.errorMessage);
     const dispatch = useDispatch();
+    const handleChange = (field,value)=>{
+        setProduct({
+            ...product,
+            [field]:value,
+        });
+    };
 
     return(
         <> 
@@ -49,9 +61,14 @@ function RegisterRest({
                     </div>
                     <div>
                         <InputButton buttonColor="bg-white" textButton ="Agregar Menu"/>
+
                     </div>
-                        <InputButton buttonColor="bg-white" textButton ="Agregar Foto"/>
+                        <InputButton fOnChange={(evt) => 
+                        setProductPicture(evt.target.files[0])} buttonColor="bg-white" textButton ="Agregar Foto"/>
                         {errorMessage && (<p className="text-white mt-2">{errorMessage}</p>)}
+                        {productPicture && (
+                            <img className=" justify-center [h-200px] w-[200px]" src={URL.createObjectURL(productPicture)}/>
+                        )}
                     <div>
                         <Buttons text="Registrar"onClick={()=> { dispatch(registRest({
                                 nameRest,email,celRest,rangePrice

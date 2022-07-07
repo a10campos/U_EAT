@@ -11,11 +11,19 @@ exports.registRest = async (req,res) => {
         console.log(restaurants);
 
         const newrest = JSON.stringify(newRestaurant)
-       // await sendWelcomeEmail(email,name);
+        await sendWelcomeEmail(email,name);
         res.status(204).send();
     }
     else {
         res.status(401).json({message:"Faltan campos por completar "});
     }
 
+};
+exports.getRestaurants = async (req,res) => {
+    try{
+        res.json(restaurants);
+    }
+    catch(error){
+        res.status(500).json({message:"Error al traer loa restaurantes"});
+    }
 };

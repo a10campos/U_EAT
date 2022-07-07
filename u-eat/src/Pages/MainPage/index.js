@@ -3,7 +3,6 @@ import Buttons from "../../Component/Buttons";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom"
 import ReactStars from "react-rating-stars-component";
-import {Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getRestaurants} from "../../Slices/userSlice";
 

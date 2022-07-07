@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from  "@reduxjs/toolkit";
+
 const userSlice = createSlice({
     name: 'user',
     initialState: {
@@ -36,6 +37,15 @@ const userSlice = createSlice({
             }
             else {
                 state.errorMessage="";
+                state.success=true;
+            }
+        })
+        .addCase(registerUser.fulfilled,(state,action)=>{
+            if (action.payload.error) {
+                state.errorMessage = action.payload.message;
+            }
+            else {
+                state.errorMessage="!Su cuenta se ha creado con exito! Por favor diríjase a la página de inicio de sesión";
                 state.success=true;
             }
         })
@@ -95,4 +105,37 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
         }
     }
 })
+
+
+
+export const registerUser = createAsyncThunk('user/registerUser', async (credentils) => {
+    const loginfetch = await fetch('http://localhost:7500/registerUser',{
+        method:'POST',
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            name:credentils.name,
+            lastName:credentils.lastName,
+            email:credentils.email,
+            username:credentils.username,
+            telephone:credentils.telephone,
+            password:credentils.password
+        })
+    });
+    const userData = await loginfetch.json();
+    if (loginfetch.status === 200){
+        return userData;
+    } else {
+        return {
+            error: true,
+            message: userData.message
+        }
+    }
+})
+
+
+
+
+
 export default userSlice.reducer;

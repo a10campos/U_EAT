@@ -3,8 +3,8 @@ const underscore = require("underscore");
 const { sendWelcomeEmail } = require('../services/mailService');
 
 exports.registRest = async (req,res) => {
-    const {name, email,phone,rangePrice} = req.body;
-    if (name && email && phone && rangePrice) {
+    const {name, email,phone,rangePrice,country,province,university} = req.body;
+    if (name && email && phone && rangePrice && country && province && university) {
         const id = restaurants.length+1;
         const newRestaurant = {id,...req.body};
         restaurants.push(newRestaurant);

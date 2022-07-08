@@ -4,7 +4,6 @@ const userSlice = createSlice({
     initialState: {
         user: null,
         isLoggedIn: false,
-        restaurants:[],
         errorMessage:"",
         success:false
     },
@@ -37,20 +36,7 @@ const userSlice = createSlice({
             }
             else {
                 state.errorMessage="";
-                state.success=true;
             }
-        })
-        .addCase(getRestaurants.fulfilled,(state,action) => {
-            if(action.payload.error) {
-                state.errorMessage = action.payload.message;
-            }
-            else {
-                state.errorMessage = "";
-                state.restaurants = action.payload;
-            }
-        })
-        .addCase(getRestaurants.rejected,(state,action) =>{
-            state.restaurants = [];
         })
     }
 
@@ -91,8 +77,10 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
             name:credentils.nameRest,
             email:credentils.email,
             phone:credentils.celRest,
-            rangePrice: credentils.rangePrice
-
+            rangePrice: credentils.rangePrice,
+            country: credentils.country,
+            province: credentils.province,
+            university: credentils.university
         })
     });
     const userData = await registerRestFetch.json();
@@ -108,24 +96,6 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
         }
     }
 })
-
-
-export const getRestaurants = createAsyncThunk('restuarant/getRestaurants',async(credentils, {getState })=> {
-    const state = getState();
-    const getRestaurantsFetch = await fetch ('http://localhost:7500/restaurants',{
-    });
-    const userData = await getRestaurantsFetch.json();
-    if (getRestaurantsFetch.status===200){
-        return userData;
-    }
-    else {
-        return {
-            error:true,
-            message: userData.message
-        }
-    }
-})
-
 export const createProduct = createAsyncThunk('restaurants/createRestaurants', async ({ product, productPicture }) => {
     const formData = new FormData();
     formData.append ('file',productPicture);

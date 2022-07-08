@@ -67,6 +67,16 @@ export const postLogin = createAsyncThunk('user/postLogin', async (credentils) =
 })
 export const registRest = createAsyncThunk('restuarant/registRest',async(credentils,{getState})=> {
     const state = getState();
+    const formData = new FormData();
+    formData.append ('file',credentils.restuarantPicture);
+    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${state.user.user.token}`,
+        },
+        body: formData,
+    });
+    const uploadFileData = await uploadFileFetch.json();
     const registerRestFetch = await fetch ('http://localhost:7500/registRest',{
         method:'POST',
         headers: {
@@ -80,7 +90,8 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
             rangePrice: credentils.rangePrice,
             country: credentils.country,
             province: credentils.province,
-            university: credentils.university
+            university: credentils.university,
+            photo: uploadFileData.url
         })
     });
     const userData = await registerRestFetch.json();

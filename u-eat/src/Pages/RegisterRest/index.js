@@ -17,7 +17,7 @@ const options = [
 ];
 function RegisterRest({
 }) {
-    const [productPicture,setProductPicture] = useState(null);
+    const [restuarantPicture,setProductPicture] = useState(null);
     /*const [product, setProduct] = useState({
         name: "",
         description:"",
@@ -81,13 +81,12 @@ function RegisterRest({
                         <InputButton fOnChange={(evt) => 
                         setProductPicture(evt.target.files[0])} buttonColor="bg-white" textButton ="Agregar Foto"/>
                         {errorMessage && (<p className="text-white mt-2">{errorMessage}</p>)}
-                        {productPicture && (
-                            <img className=" justify-center [h-200px] w-[200px]" src={URL.createObjectURL(productPicture)}/>
+                        {restuarantPicture && (
+                            <img className=" justify-center [h-200px] w-[200px]" src={URL.createObjectURL(restuarantPicture)}/>
                         )}
-                        <button onClick={()=>{dispatch(createProduct({productPicture}))}}> Prueba</button>
                     <div>
                         <Buttons text="Registrar"onClick={()=> { dispatch(registRest({
-                                nameRest,email,celRest,rangePrice,country,province,university
+                                nameRest,email,celRest,rangePrice,country,province,university,restuarantPicture
                             }));}}/>
                     </div>
                 </div>

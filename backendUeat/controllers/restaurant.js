@@ -9,7 +9,6 @@ exports.registRest = async (req,res) => {
         const newRestaurant = {id,...req.body};
         restaurants.push(newRestaurant);
         console.log(restaurants);
-
         const newrest = JSON.stringify(newRestaurant)
         //await sendWelcomeEmail(email,name);
         res.status(204).send();

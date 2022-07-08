@@ -1,6 +1,7 @@
 const restaurants = require('../restaurant.json');
 const underscore = require("underscore");
 const { sendWelcomeEmail } = require('../services/mailService');
+const { find } = require('underscore');
 
 exports.registRest = async (req,res) => {
     const {name, email,phone,rangePrice} = req.body;
@@ -26,4 +27,33 @@ exports.getRestaurants = async (req,res) => {
     catch(error){
         res.status(500).json({message:"Error al traer loa restaurantes"});
     }
+};
+
+exports.getRestaurantByID = async (req,res) => {
+    console.log("holaaaaa");
+    const {id} = req.body;
+    if (id){
+        let matchingID = false;
+        for(let i = 0; i < restaurants.length && !matchingID; ++i){
+            if(id == restaurants[i].id){
+                matchingID = true;
+            }
+        }
+        if(matchingID == true){
+            try{
+                console.log(restaurants[id-1]);
+                res.json(restaurants[id-1]);
+            }
+            catch(error){
+                res.status(500).json({message:"Error al traer loa restaurantes"});
+            }
+        }
+        else{
+            res.status(401).json({message:"No se encontró el restaurante"});
+        }
+    }
+    else {
+        res.status(401).json({message:"No se encontró el restaurante"});
+    }
+
 };

@@ -6,6 +6,7 @@ const userSlice = createSlice({
         user: null,
         isLoggedIn: false,
         restaurants:[],
+        restaurant: null,
         errorMessage:"",
         success:false
     },
@@ -46,7 +47,7 @@ const userSlice = createSlice({
                 state.errorMessage = action.payload.message;
             }
             else {
-                state.errorMessage="!Su cuenta se ha creado con exito! Por favor diríjase a la página de inicio de sesión";
+                state.errorMessage= action.payload.message;
                 state.success=true;
             }
         })
@@ -61,6 +62,15 @@ const userSlice = createSlice({
         })
         .addCase(getRestaurants.rejected,(state,action) =>{
             state.restaurants = [];
+        })
+        .addCase(getRestaurantByID.fulfilled,(state,action)=>{
+            if (action.payload.error) {
+                state.errorMessage = action.payload.message;
+            }
+            else {
+                state.errorMessage= action.payload.message;
+                state.restaurant=action.payload;
+            }
         })
     }
 
@@ -122,7 +132,7 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
 
 
 export const registerUser = createAsyncThunk('user/registerUser', async (credentils) => {
-    const loginfetch = await fetch('http://localhost:7500/registerUser',{
+    const registerUserfetch = await fetch('http://localhost:7500/registerUser',{
         method:'POST',
         headers: {
             "Content-type": "application/json"
@@ -136,8 +146,8 @@ export const registerUser = createAsyncThunk('user/registerUser', async (credent
             password:credentils.password
         })
     });
-    const userData = await loginfetch.json();
-    if (loginfetch.status === 200){
+    const userData = await registerUserfetch.json();
+    if (registerUser.status === 200){
         return userData;
     } else {
         return {
@@ -162,4 +172,29 @@ export const getRestaurants = createAsyncThunk('restuarant/getRestaurants',async
         }
     }
 })
+
+export const getRestaurantByID = createAsyncThunk('restuarant/getRestaurantByID', async (credentils) => {
+    console.log("entreeeee " + credentils.id);
+    const getRestaurantByIDfetch = await fetch('http://localhost:7500/getRestaurantByID',{
+        method:'POST',
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            id:credentils.id
+        })
+    });
+    console.log("saliiiii");
+    const userData = await getRestaurantByIDfetch.json();
+    if (getRestaurantByIDfetch.status === 200){
+        return userData;
+    } else {
+        return {
+            error: true,
+            message: userData.message
+        }
+    }
+})
+
+
 export default userSlice.reducer;

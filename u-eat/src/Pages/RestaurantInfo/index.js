@@ -1,10 +1,36 @@
-import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+import {Link, Routes, Route, useNavigate, useParams, Router} from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getRestaurantByID} from "../../Slices/userSlice";
 import Header from "../../Component/Header"
 import Carousel from "../../Component/Carousel"
 
 export default function RestaurantInfo() {
+  let id = useParams();
+  const dispatch = useDispatch();
+
+
+  //let restaurant = dispatch(getRestaurantByID({id}));
+  const restaurant = useSelector((state) => state.user.restaurant);
+  console.log(id);
+
+  //dispatch(getRestaurantByID(id));
+  //React.memo(dispatch(getRestaurantByID(id)));
+
+  useEffect(() => {
+    let ignore = false;
+    
+    if (!ignore)  dispatch(getRestaurantByID(id))
+    return () => { ignore = true; }
+    },[dispatch,id]);
+
+  console.log(restaurant);
+
+    //HACER UN USER IS LOGGED IN? PERO MAS BIEN CON LA VARIABLE RESTAURANT
+
   return (
     <div className="flex flex-col h-screen">
+      <p>{restaurant.name}</p>
       <div>
         <Header></Header>
         

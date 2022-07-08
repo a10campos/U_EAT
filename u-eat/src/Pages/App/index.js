@@ -22,7 +22,9 @@ export default function App() {
         <Route path ="MainPage" element={<MainPage/>}></Route>
         <Route path ="Review" element={<Review/>}></Route>
         <Route path ="Location" element={<Location/>}></Route>
-        <Route path="/RestaurantInfo" element={<RestaurantInfo/>}></Route>
+        <Route path="restaurant"> 
+          <Route path=":id" element={<RestaurantInfo/>}/>
+        </Route>
         <Route element={<PrivateRoute/> }>
           <Route path ="RegisterRest" element={<RegisterRest/>}></Route>
           <Route path="/Perfil" element={<Perfil />}></Route>

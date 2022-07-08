@@ -1,4 +1,4 @@
-import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+import {Link, Routes, Route, useNavigate, useParams} from 'react-router-dom';
 function Home({
 
 }){

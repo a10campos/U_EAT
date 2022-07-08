@@ -125,4 +125,23 @@ export const getRestaurants = createAsyncThunk('restuarant/getRestaurants',async
         }
     }
 })
+
+export const createProduct = createAsyncThunk('restaurants/createRestaurants', async ({ product, productPicture }) => {
+    const formData = new FormData();
+    formData.append ('file',productPicture);
+    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+        method: 'POST',
+        body: formData,
+    });
+    const productData = await uploadFileFetch.json();
+    if (uploadFileFetch.status === 200) {
+        return productData;
+    } else {
+        return {
+            error: true,
+            message: productData.error.message,
+        }
+    }
+});
+
 export default userSlice.reducer;

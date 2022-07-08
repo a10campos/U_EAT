@@ -4,7 +4,7 @@ import {useDispatch,useSelector} from "react-redux";
 import Buttons from "../../Component/Buttons";
 import InputButton from "../../Component/InputButtons";
 import InputText from "../../Component/InputText";
-import {registRest} from "../../Slices/userSlice";
+import {registRest,createProduct} from "../../Slices/userSlice";
 
 const options = [
     {value:"Rapida", label:"Rapida"},
@@ -69,6 +69,7 @@ function RegisterRest({
                         {productPicture && (
                             <img className=" justify-center [h-200px] w-[200px]" src={URL.createObjectURL(productPicture)}/>
                         )}
+                        <button onClick={()=>{dispatch(createProduct({productPicture}))}}> Prueba</button>
                     <div>
                         <Buttons text="Registrar"onClick={()=> { dispatch(registRest({
                                 nameRest,email,celRest,rangePrice

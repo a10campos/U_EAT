@@ -1,6 +1,7 @@
 import Header from "../../Component/Header";
 import Buttons from "../../Component/Buttons";
 import {useEffect} from "react";
+//import Rating from '@mui/material/Rating';
 import {Link} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import {getRestaurants} from "../../Slices/restaurantSlice";
@@ -17,6 +18,8 @@ import {getRestaurants} from "../../Slices/restaurantSlice";
     dispatch(getRestaurants());
   }, [dispatch]);
 
+  const points = restaurants.points;
+
   console.log(restaurants);
 
     return (
@@ -31,7 +34,7 @@ import {getRestaurants} from "../../Slices/restaurantSlice";
                   {
                   restaurants.map((i) => {
                       return (
-                      <Link to={`/restaurant/${i.id}`} key={`restaurant${i.id}`} >
+                      <Link to={`/restaurant/${i.name}`} key={`restaurant${i.id}`} >
                         <div className="ml-4 w-screen items-center flex">
                         <img src={i.photo} alt={i.name} className="object-contain h-44 w-44"/>  
                         <div >
@@ -39,6 +42,8 @@ import {getRestaurants} from "../../Slices/restaurantSlice";
                             <p className="text-2xl font-bold">{i.name}</p>
                             <p> A {i.distance} metros</p> 
                             <p> ₡{i.lowerPrice} - ₡{i.higherPrice}</p> 
+                            <p> Valoración: {i.points}</p> 
+                            {/* <Rating name="read-only" value={points} size="small"/> */}
                           </div>      
                         </div>
                      </div>

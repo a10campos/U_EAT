@@ -1,12 +1,10 @@
-import Header from "../../Component/Header";
-import Buttons from "../../Component/Buttons";
-import {useNavigate} from "react-router-dom";
+import HeaderLight from "../../Component/HeaderLight";
 
 export default function ReviewSent() {
 
   return (
     <>
-      <Header />
+      <HeaderLight/>
       <div className="bg-fondoPrincipal h-screen ">
         <div className="flex justify-center text-center items-center">
           <p className="text-4xl text-white font-medium  mx-4 mt-64">

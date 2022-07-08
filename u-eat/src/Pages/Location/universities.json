@@ -1,0 +1,170 @@
+[
+    {
+       "id":"1",
+       "StateId":"1",
+       "countryId":"1",
+       "name":"UCR"
+    },
+    {
+       "id":"2",
+       "StateId":"1",
+       "countryId":"1",
+       "name":"Universidad Latina"
+    },
+    {
+       "id":"3",
+       "StateId":"1",
+       "countryId":"1",
+       "name":"Universidad Fidélitas"
+    },
+    {
+       "id":"1",
+       "StateId":"2",
+       "countryId":"1",
+       "name":"UNA"
+    },
+    {
+       "id":"1",
+       "StateId":"2",
+       "countryId":"1",
+       "name":"Universidad Central"
+    },
+    {
+       "id":"1",
+       "StateId":"2",
+       "countryId":"1",
+       "name":"Universidad Latina"
+    },
+    {
+       "id":"1",
+       "StateId":"3",
+       "countryId":"1",
+       "name":"TEC"
+    },
+    {
+       "id":"1",
+       "StateId":"3",
+       "countryId":"1",
+       "name":"Universidad Americana"
+    },
+    {
+       "id":"1",
+       "StateId":"3",
+       "countryId":"1",
+       "name":"Universidad San Marcos"
+    },
+    {
+       "id":"1",
+       "StateId":"4",
+       "countryId":"1",
+       "name":"UCR"
+    },
+    {
+        "id":"2",
+        "StateId":"4",
+        "countryId":"1",
+        "name":"UNA"
+     },
+     {
+        "id":"4",
+        "StateId":"4",
+        "countryId":"1",
+        "name":"Universidad Santa Lucía"
+     },
+     {
+        "id":"1",
+        "StateId":"5",
+        "countryId":"1",
+        "name":"UCR"
+     },
+     {
+        "id":"2",
+        "StateId":"5",
+        "countryId":"1",
+        "name":"Universidad Latina"
+     },
+     {
+        "id":"1",
+        "StateId":"5",
+        "countryId":"1",
+        "name":"Universidad Santa Lucía"
+     },
+     {
+        "id":"1",
+        "StateId":"6",
+        "countryId":"1",
+        "name":"UCR"
+     },
+     {
+        "id":"2",
+        "StateId":"6",
+        "countryId":"1",
+        "name":"TEC"
+     },
+     {
+        "id":"3",
+        "StateId":"6",
+        "countryId":"1",
+        "name":"ULICORI"
+     },
+     {
+        "id":"1",
+        "StateId":"7",
+        "countryId":"1",
+        "name":"UCR"
+     },
+     {
+        "id":"2",
+        "StateId":"7",
+        "countryId":"1",
+        "name":"CENSA"
+     },
+     {
+        "id":"3",
+        "StateId":"7",
+        "countryId":"1",
+        "name":"Universidad Invenio"
+     },
+     {
+        "id":"1",
+        "StateId":"8",
+        "countryId":"2",
+        "name":"NYU"
+     },
+     {
+        "id":"2",
+        "StateId":"8",
+        "countryId":"2",
+        "name":"Universidad Columbia"
+     },
+     {
+        "id":"3",
+        "StateId":"8",
+        "countryId":"2",
+        "name":"Academia Julliard"
+     },
+     {
+        "id":"4",
+        "StateId":"8",
+        "countryId":"2",
+        "name":"Universidad Fordham"
+     },
+     {
+        "id":"1",
+        "StateId":"9",
+        "countryId":"3",
+        "name":"UNAM"
+     },
+     {
+        "id":"2",
+        "StateId":"9",
+        "countryId":"2",
+        "name":"Universidad Humanitas"
+     },
+     {
+        "id":"3",
+        "StateId":"9",
+        "countryId":"3",
+        "name":"Universidad La Salle"
+     }
+ ]

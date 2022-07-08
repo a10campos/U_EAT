@@ -1,0 +1,47 @@
+[
+    {
+       "id":"1",
+       "countryId":"1",
+       "name":"San José"
+    },
+    {
+       "id":"2",
+       "countryId":"1",
+       "name":"Heredia"
+    },
+    {
+       "id":"3",
+       "countryId":"1",
+       "name":"Cartago"
+    },
+    {
+       "id":"4",
+       "countryId":"1",
+       "name":"Alajuela"
+    },
+    {
+       "id":"5",
+       "countryId":"1",
+       "name":"Puntarenas"
+    },
+    {
+       "id":"6",
+       "countryId":"1",
+       "name":"Limón"
+    },
+    {
+       "id":"7",
+       "countryId":"1",
+       "name":"Guanacaste"
+    },
+    {
+       "id":"8",
+       "countryId":"2",
+       "name":"New York"
+    },
+    {
+       "id":"9",
+       "countryId":"3",
+       "name":"Distrito Federal"
+    }
+ ]

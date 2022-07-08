@@ -2,38 +2,18 @@ import Header from "../../Component/Header";
 import Buttons from "../../Component/Buttons";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom"
-import ReactStars from "react-rating-stars-component";
-import { useDispatch, useSelector } from "react-redux";
-import {getRestaurants} from "../../Slices/userSlice";
-
-//const restaurants = require('../../restaurants.json');
-
- 
   export default function MainPage() {
 
-    const restaurants = useSelector(
-      (state) => state.user.restaurants
-    );
-  
-    const dispatch = useDispatch();
+    const [restaurants,setRestaurant] = useState([]);
 
-
-    useEffect(() => {
-    dispatch(getRestaurants());
-  }, [dispatch]);
-
-  console.log(restaurants);
-
-    // const [_restaurants, setRestaurants] = useState([]);
-
-    // useEffect (()=> {
-    //   const fetchRestaurants = async () => {
-    //   const restaurantsFetch = await fetch(restaurants);
-    //   const restaurantsJSON = await restaurantsFetch.json(); 
-    //     setRestaurants(restaurantsJSON);
-    //   }
-    //   fetchRestaurants();
-    // }, []);
+    useEffect(()=>{
+      const fetchRestaurants = async () => {
+        const restaurantsFetch = await fetch ('http://localhost:7500/restaurants');
+        const resturantBody = await restaurantsFetch.json();
+        setRestaurant(resturantBody);
+      }
+      fetchRestaurants();
+    },[]);
 
     return (
         <div>

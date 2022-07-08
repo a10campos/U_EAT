@@ -95,7 +95,7 @@ export default function Register() {
                     />
                 </div>
                 <div className=" flex flex-col items-center">
-                    {errorMessage && (<p id="mensajeError" className="text-white invisible mt-14">{errorMessage}</p>)}
+                    {errorMessage && (<p id="mensajeError" className="text-white mt-14 invisible">{errorMessage}</p>)}
                     <button className="mt-2 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
                         onClick={() => { dispatch(registerUser({
                             name, lastName, email, username, telephone, password

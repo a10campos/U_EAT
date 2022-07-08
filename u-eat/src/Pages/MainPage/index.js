@@ -1,12 +1,29 @@
-import Header from "../../Component/Header"
+import Header from "../../Component/Header";
 import Buttons from "../../Component/Buttons";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom"
+import ReactStars from "react-rating-stars-component";
+import { useDispatch, useSelector } from "react-redux";
+import {getRestaurants} from "../../Slices/userSlice";
 
-const restaurants = require('../../restaurants.json');
+//const restaurants = require('../../restaurants.json');
 
  
   export default function MainPage() {
+
+    const restaurants = useSelector(
+      (state) => state.user.restaurants
+    );
+  
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+    dispatch(getRestaurants());
+  }, [dispatch]);
+
+  console.log(restaurants);
+
     // const [_restaurants, setRestaurants] = useState([]);
 
     // useEffect (()=> {

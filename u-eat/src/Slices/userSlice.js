@@ -32,6 +32,15 @@ const userSlice = createSlice({
         .addCase(postLogin.rejected,(state,action ) => {
             state.userIsLoggedIn = false;
         })
+        .addCase(registerUser.fulfilled,(state,action)=>{
+            if (action.payload.error) {
+                state.errorMessage = action.payload.message;
+            }
+            else {
+                state.errorMessage="!Su cuenta se ha creado con exito! Por favor diríjase a la página de inicio de sesión";
+                state.success=true;
+            }
+        })
     }
 
 });
@@ -46,6 +55,32 @@ export const postLogin = createAsyncThunk('user/postLogin', async (credentils) =
         },
         body: JSON.stringify({
             email:credentils.username,
+            password:credentils.password
+        })
+    });
+    const userData = await loginfetch.json();
+    if (loginfetch.status === 200){
+        return userData;
+    } else {
+        return {
+            error: true,
+            message: userData.message
+        }
+    }
+})
+
+export const registerUser = createAsyncThunk('user/registerUser', async (credentils) => {
+    const loginfetch = await fetch('http://localhost:7500/registerUser',{
+        method:'POST',
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            name:credentils.name,
+            lastName:credentils.lastName,
+            email:credentils.email,
+            username:credentils.username,
+            telephone:credentils.telephone,
             password:credentils.password
         })
     });

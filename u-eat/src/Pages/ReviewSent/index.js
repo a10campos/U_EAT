@@ -11,7 +11,7 @@ export default function ReviewSent() {
             ¡Su reseña fue enviada! </p>
         </div>
         <div className="flex items-center justify-center mt-12">
-        <a href="/MainPage" className="text-white text-xl no-underline hover:underline ...">Ir a pantalla principal</a>
+        <a href="/" className="text-white text-xl no-underline hover:underline ...">Ir a pantalla principal</a>
         </div>
       </div>
     </>

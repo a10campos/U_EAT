@@ -37,8 +37,8 @@ export default function RestaurantInfo() {
           <div className= " mt-10">
             {/*Div de informacion del restaurante*/}
             <div className= "flex flex-row justify-center space-x-4">
-              <p className=" text-xl font-bold text-projectBlack">Distancia: {restaurant.country}</p>
-              <p className=" text-xl text-projectBlack">400 m</p>
+              <p className=" text-xl font-bold text-projectBlack">Distancia:</p>
+              <p className=" text-xl text-projectBlack">{restaurant.distance} m</p>
             </div>
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Tipo de comida:</p>

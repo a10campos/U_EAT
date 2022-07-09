@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext } from "react";
-import themes from "../../Utils/Theme";
 import PrivateRoute from "../../Component/PrivateRoute";
 import Home from "../Home";
 import Register from "../Register";
@@ -13,12 +11,10 @@ import Review from "../Review";
 import ReviewSent from "../ReviewSent";
 import Location from "../Location";
 
-export const ThemeContext = createContext(themes.dark);
 
 export default function App() {
   return (
     <BrowserRouter>
-      <ThemeContext.Provider value={themes.dark}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />
@@ -34,7 +30,6 @@ export default function App() {
             <Route path="ReviewSent" element={<ReviewSent />}></Route>
           </Route>
         </Routes>
-      </ThemeContext.Provider>
     </BrowserRouter>
   );
 }

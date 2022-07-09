@@ -12,15 +12,13 @@ import {useNavigate} from "react-router-dom";
     const [points,setPoints] = useState ("");
     const [details,setDetails] = useState ("");
     const navigate = useNavigate();
-
-
     const dispatch = useDispatch();
 
     return (
       <>
         <Header />
         <div className="h-screen font-sans text-projectBlack w-screen">
-          <div className="flex justify-center my-4 mx-4">
+          <div className="flex justify-center my-8 mx-4">
             <p className="font-bold text-3xl tracking-widest">
               Nombre restaurante
             </p>

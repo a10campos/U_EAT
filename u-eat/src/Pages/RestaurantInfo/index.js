@@ -1,8 +1,21 @@
-import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+import {Link, Routes, Route, useNavigate, useParams} from 'react-router-dom';
 import Header from "../../Component/Header"
 import Carousel from "../../Component/Carousel"
+import { useEffect, useState } from 'react';
 
 export default function RestaurantInfo() {
+  const {id} = useParams();
+  const [restaurant,setRestaurant] = useState([]);
+  useEffect (()=> {
+    const getRestaurantById = async () => {
+      const restaurantFetch = await fetch(`http://localhost:7500/restaurants/${id}`);
+      const restaurantData = await restaurantFetch.json();
+      setRestaurant(restaurantData);
+    }
+    getRestaurantById();
+  },[]);
+
+
   return (
     <div className="flex flex-col h-screen">
       <div>
@@ -13,7 +26,7 @@ export default function RestaurantInfo() {
         {/*Div de informacion del*/}
         <div className="text-center w-screen">
           <div className=" mb-20">
-            <h1 className="text-5xl font-bold text-projectBlack">Jardin de Lucy</h1>
+            <h1 className="text-5xl font-bold text-projectBlack">{restaurant.name}</h1>
           </div>
 
           <div className="flex justify-center">
@@ -25,7 +38,7 @@ export default function RestaurantInfo() {
             {/*Div de informacion del restaurante*/}
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Distancia:</p>
-              <p className=" text-xl text-projectBlack">400 m</p>
+              <p className=" text-xl text-projectBlack">{restaurant.distance} m</p>
             </div>
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Tipo de comida:</p>
@@ -33,7 +46,7 @@ export default function RestaurantInfo() {
             </div>
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Precios:</p>
-              <p className=" text-xl text-projectBlack">₡1500-₡6000</p>
+              <p className=" text-xl text-projectBlack">{restaurant.rangePrice}</p>
             </div>
             {/*falta agregar estrellas*/}
           </div>

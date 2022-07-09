@@ -15,7 +15,7 @@ function Login() {
 
     return userIsLoggedIn ? (
         <>
-            <Navigate to = "/MainPage"/>
+            <Navigate to = "/"/>
 
             <button className="bg-fondoBotonesA"
             onClick= {()=>dispatch (logout())}>Salir</button>
@@ -44,7 +44,7 @@ function Login() {
                         </div>
                     <div className="text-white ">
                         <p className="mb-2">¿Olvido su Contraseña?</p>
-                        <p>¿No se ha registrado? Registrate aqui</p>
+                        <p href = "/register">¿No se ha registrado? Registrate aqui</p>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,8 @@ module.exports = {
         projectBlue: '#0b3c5d',
         projectMustard: '#d9b310',
         projectBlack: '#1d2731',
-
+        colorConfirmation: "#00BB2D",
+        fondoTransparente: "#373a47",
         //De Aaron
         colorBotonGris: "#fffefe",
         fondoPrincipal: "#0B3C5D",

@@ -40,7 +40,16 @@ server.use(userRoutes);
 server.use(restRoutes);
 server.use(reviewRoutes);
 
-
+server.post("/upload",upload.single("file"), function(req, res){
+    const file = req.file;
+    res.send({
+        message:"Uploaded!",
+        url: file.location,
+        name: file.key,
+        type: file.mimetype,
+        size: file.size,
+    });
+});
 
 server.listen(process.env.PORT||7500);
 console.log(`Server running at http://localhost:${process.env.PORT || 7500}`)

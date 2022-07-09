@@ -1,17 +1,18 @@
 const restaurants = require('../restaurant.json');
 const underscore = require("underscore");
+const reviews = require("../reviews.json");
 const { sendWelcomeEmail } = require('../services/mailService');
+const { find } = require('underscore');
 
 exports.registRest = async (req,res) => {
-    const {name, email,phone,rangePrice} = req.body;
-    if (name && email && phone && rangePrice) {
+    const {name, email,phone,rangePrice,country,province,university} = req.body;
+    if (name && email && phone && rangePrice && country && province && university) {
         const id = restaurants.length+1;
         const newRestaurant = {id,...req.body};
         restaurants.push(newRestaurant);
         console.log(restaurants);
-
         const newrest = JSON.stringify(newRestaurant)
-        await sendWelcomeEmail(email,name);
+        //await sendWelcomeEmail(email,name);
         res.status(204).send();
     }
     else {
@@ -26,5 +27,27 @@ exports.getRestaurants = async (req,res) => {
     }
     catch(error){
         res.status(500).json({message:"Error al traer los restaurantes"});
+    }
+};
+exports.getRestaurantById = async (req,res) => {
+    try{
+        const restId = parseInt(req.params.id);
+        underscore.each(restaurants,(rest,i) => {
+            if (rest.id == restId) {
+                const result = rest;
+                res.json(result);
+            }
+        });
+    } catch (error) {
+        res.status(500).json("Error in the server" + error);
+    }
+
+};
+
+exports.getReviewByRestaurant = async (req,res) => {
+    try {
+        res.json(reviews);
+    } catch (error) {
+        res.status(500).json("Error in the server" + error)
     }
 };

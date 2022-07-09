@@ -5,7 +5,6 @@ const userSlice = createSlice({
     initialState: {
         user: null,
         isLoggedIn: false,
-        restaurants:[],
         errorMessage:"",
         success:false
     },
@@ -32,12 +31,20 @@ const userSlice = createSlice({
         .addCase(postLogin.rejected,(state,action ) => {
             state.userIsLoggedIn = false;
         })
+        .addCase(registRest.fulfilled,(state,action)=>{
+            if (action.payload.error) {
+                state.errorMessage = action.payload.message;
+            }
+            else {
+                state.errorMessage="";
+            }
+        })
         .addCase(registerUser.fulfilled,(state,action)=>{
             if (action.payload.error) {
                 state.errorMessage = action.payload.message;
             }
             else {
-                state.errorMessage="!Su cuenta se ha creado con exito! Por favor diríjase a la página de inicio de sesión";
+                state.errorMessage= action.payload.message;
                 state.success=true;
             }
         })
@@ -68,9 +75,69 @@ export const postLogin = createAsyncThunk('user/postLogin', async (credentils) =
         }
     }
 })
+export const registRest = createAsyncThunk('restuarant/registRest',async(credentils,{getState})=> {
+    const state = getState();
+    const formData = new FormData();
+    formData.append ('file',credentils.restuarantPicture);
+    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${state.user.user.token}`,
+        },
+        body: formData,
+    });
+    const uploadFileData = await uploadFileFetch.json();
+    const registerRestFetch = await fetch ('http://localhost:7500/registRest',{
+        method:'POST',
+        headers: {
+            Authorization: `Bearer ${state.user.user.token}`,
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            name:credentils.nameRest,
+            email:credentils.email,
+            phone:credentils.celRest,
+            rangePrice: credentils.rangePrice,
+            country: credentils.country,
+            province: credentils.province,
+            university: credentils.university,
+            photo: uploadFileData.url
+        })
+    });
+    const userData = await registerRestFetch.json();
+
+    if (registerRestFetch.status===200){
+        return userData;
+    }
+    else {
+        console.log(userData.message);
+        return {
+            error:true,
+            message: userData.message
+        }
+    }
+})
+export const createProduct = createAsyncThunk('restaurants/createRestaurants', async ({ product, productPicture }) => {
+    const formData = new FormData();
+    formData.append ('file',productPicture);
+    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+        method: 'POST',
+        body: formData,
+    });
+    const productData = await uploadFileFetch.json();
+    if (uploadFileFetch.status === 200) {
+        return productData;
+    } else {
+        return {
+            error: true,
+            message: productData.error.message,
+        }
+    }
+});
+
 
 export const registerUser = createAsyncThunk('user/registerUser', async (credentils) => {
-    const loginfetch = await fetch('http://localhost:7500/registerUser',{
+    const registerUserfetch = await fetch('http://localhost:7500/registerUser',{
         method:'POST',
         headers: {
             "Content-type": "application/json"
@@ -84,8 +151,8 @@ export const registerUser = createAsyncThunk('user/registerUser', async (credent
             password:credentils.password
         })
     });
-    const userData = await loginfetch.json();
-    if (loginfetch.status === 200){
+    const userData = await registerUserfetch.json();
+    if (registerUser.status === 200){
         return userData;
     } else {
         return {
@@ -94,6 +161,5 @@ export const registerUser = createAsyncThunk('user/registerUser', async (credent
         }
     }
 })
-
 
 export default userSlice.reducer;

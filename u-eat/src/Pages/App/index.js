@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/register" element={<Register />}/>
         <Route path="/login" element={<Login/>}/>
         <Route path ="location" element={<Location/>}></Route>
-        <Route path="/restaurantInfo" element={<RestaurantInfo/>}></Route>
+        <Route path="restaurants/:id" element={<RestaurantInfo/>}></Route>
         <Route element={<PrivateRoute/> }>
           <Route path ="registerRest" element={<RegisterRest/>}></Route>
           <Route path="/perfil" element={<Perfil />}></Route>

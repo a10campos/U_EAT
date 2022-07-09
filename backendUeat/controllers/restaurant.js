@@ -26,3 +26,17 @@ exports.getRestaurants = async (req,res) => {
         res.status(500).json({message:"Error al traer loa restaurantes"});
     }
 };
+exports.getRestaurantById = async (req,res) => {
+    try{
+        const restId = parseInt(req.params.id)
+        underscore.each(restaurants,(rest,i) => {
+            if (rest.id == restId) {
+                const result = rest;
+                res.json(result);
+            }
+        });
+    } catch (error) {
+        res.status(500).json("Error in the server" + error);
+    }
+
+};

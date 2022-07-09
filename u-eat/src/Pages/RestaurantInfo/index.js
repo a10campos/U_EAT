@@ -1,32 +1,20 @@
-import {Link, Routes, Route, useNavigate, useParams, Router} from 'react-router-dom';
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getRestaurantByID} from "../../Slices/userSlice";
+import {Link, Routes, Route, useNavigate, useParams} from 'react-router-dom';
 import Header from "../../Component/Header"
 import Carousel from "../../Component/Carousel"
+import { useEffect, useState } from 'react';
 
 export default function RestaurantInfo() {
-  let id = useParams();
-  const dispatch = useDispatch();
+  const {id} = useParams();
+  const [restaurant,setRestaurant] = useState([]);
+  useEffect (()=> {
+    const getRestaurantById = async () => {
+      const restaurantFetch = await fetch(`http://localhost:7500/restaurants/${id}`);
+      const restaurantData = await restaurantFetch.json();
+      setRestaurant(restaurantData);
+    }
+    getRestaurantById();
+  },[]);
 
-
-  //let restaurant = dispatch(getRestaurantByID({id}));
-  const restaurant = useSelector((state) => state.user.restaurant);
-  console.log(id);
-
-  //dispatch(getRestaurantByID(id));
-  //React.memo(dispatch(getRestaurantByID(id)));
-
-  useEffect(() => {
-    let ignore = false;
-    
-    if (!ignore)  dispatch(getRestaurantByID(id))
-    return () => { ignore = true; }
-    },[dispatch,id]);
-
-  console.log(restaurant);
-
-    //HACER UN USER IS LOGGED IN? PERO MAS BIEN CON LA VARIABLE RESTAURANT
 
   return (
     <div className="flex flex-col h-screen">
@@ -39,7 +27,7 @@ export default function RestaurantInfo() {
         {/*Div de informacion del*/}
         <div className="text-center w-screen">
           <div className=" mb-20">
-            <h1 className="text-5xl font-bold text-projectBlack">Jardin de Lucy</h1>
+            <h1 className="text-5xl font-bold text-projectBlack">{restaurant.name}</h1>
           </div>
 
           <div className="flex justify-center">
@@ -51,7 +39,7 @@ export default function RestaurantInfo() {
             {/*Div de informacion del restaurante*/}
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Distancia:</p>
-              <p className=" text-xl text-projectBlack">400 m</p>
+              <p className=" text-xl text-projectBlack">{restaurant.distance} m</p>
             </div>
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Tipo de comida:</p>
@@ -59,7 +47,7 @@ export default function RestaurantInfo() {
             </div>
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Precios:</p>
-              <p className=" text-xl text-projectBlack">₡1500-₡6000</p>
+              <p className=" text-xl text-projectBlack">{restaurant.rangePrice}</p>
             </div>
             {/*falta agregar estrellas*/}
           </div>

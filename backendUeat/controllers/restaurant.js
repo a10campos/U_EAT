@@ -1,18 +1,18 @@
 const restaurants = require('../restaurant.json');
 const underscore = require("underscore");
+const reviews = require("../reviews.json");
 const { sendWelcomeEmail } = require('../services/mailService');
 const { find } = require('underscore');
 
 exports.registRest = async (req,res) => {
-    const {name, email,phone,rangePrice} = req.body;
-    if (name && email && phone && rangePrice) {
+    const {name, email,phone,rangePrice,country,province,university} = req.body;
+    if (name && email && phone && rangePrice && country && province && university) {
         const id = restaurants.length+1;
         const newRestaurant = {id,...req.body};
         restaurants.push(newRestaurant);
         console.log(restaurants);
-
         const newrest = JSON.stringify(newRestaurant)
-        await sendWelcomeEmail(email,name);
+        //await sendWelcomeEmail(email,name);
         res.status(204).send();
     }
     else {
@@ -28,32 +28,25 @@ exports.getRestaurants = async (req,res) => {
         res.status(500).json({message:"Error al traer loa restaurantes"});
     }
 };
-
-exports.getRestaurantByID = async (req,res) => {
-    console.log("holaaaaa");
-    const {id} = req.body;
-    if (id){
-        let matchingID = false;
-        for(let i = 0; i < restaurants.length && !matchingID; ++i){
-            if(id == restaurants[i].id){
-                matchingID = true;
+exports.getRestaurantById = async (req,res) => {
+    try{
+        const restId = parseInt(req.params.id);
+        underscore.each(restaurants,(rest,i) => {
+            if (rest.id == restId) {
+                const result = rest;
+                res.json(result);
             }
-        }
-        if(matchingID == true){
-            try{
-                console.log(restaurants[id-1]);
-                res.json(restaurants[id-1]);
-            }
-            catch(error){
-                res.status(500).json({message:"Error al traer loa restaurantes"});
-            }
-        }
-        else{
-            res.status(401).json({message:"No se encontró el restaurante"});
-        }
-    }
-    else {
-        res.status(401).json({message:"No se encontró el restaurante"});
+        });
+    } catch (error) {
+        res.status(500).json("Error in the server" + error);
     }
 
+};
+
+exports.getReviewByRestaurant = async (req,res) => {
+    try {
+        res.json(reviews);
+    } catch (error) {
+        res.status(500).json("Error in the server" + error)
+    }
 };

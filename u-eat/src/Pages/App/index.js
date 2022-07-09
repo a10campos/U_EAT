@@ -1,6 +1,5 @@
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 import PrivateRoute from "../../Component/PrivateRoute";
-import Home from "../Home";
 import Register from "../Register";
 import RestaurantInfo from "../RestaurantInfo";
 import Login from "../Login"
@@ -16,19 +15,15 @@ export default function App() {
 
   <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="register" element={<Register />}/>
-        <Route path="/Login" element={<Login/>}/>
-        <Route path ="MainPage" element={<MainPage/>}></Route>
-        <Route path ="Review" element={<Review/>}></Route>
-        <Route path ="Location" element={<Location/>}></Route>
-        <Route path="restaurant"> 
-          <Route path=":id" element={<RestaurantInfo/>}/>
-        </Route>
+        <Route path ="/" element={<MainPage/>}></Route>
+        <Route path="/register" element={<Register />}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path ="location" element={<Location/>}></Route>
+        <Route path="restaurants/:id" element={<RestaurantInfo/>}></Route>
         <Route element={<PrivateRoute/> }>
-          <Route path ="RegisterRest" element={<RegisterRest/>}></Route>
-          <Route path="/Perfil" element={<Perfil />}></Route>
-          <Route path ="Review" element={<Review/>}></Route>
+          <Route path ="registerRest" element={<RegisterRest/>}></Route>
+          <Route path="/perfil" element={<Perfil />}></Route>
+          <Route path ="review" element={<Review/>}></Route>
         </Route>
       </Routes>
   </BrowserRouter>

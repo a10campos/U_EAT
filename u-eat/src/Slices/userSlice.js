@@ -5,8 +5,6 @@ const userSlice = createSlice({
     initialState: {
         user: null,
         isLoggedIn: false,
-        restaurants:[],
-        restaurant: null,
         errorMessage:"",
         success:false
     },
@@ -39,7 +37,6 @@ const userSlice = createSlice({
             }
             else {
                 state.errorMessage="";
-                state.success=true;
             }
         })
         .addCase(registerUser.fulfilled,(state,action)=>{
@@ -101,6 +98,16 @@ export const postLogin = createAsyncThunk('user/postLogin', async (credentils) =
 })
 export const registRest = createAsyncThunk('restuarant/registRest',async(credentils,{getState})=> {
     const state = getState();
+    const formData = new FormData();
+    formData.append ('file',credentils.restuarantPicture);
+    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${state.user.user.token}`,
+        },
+        body: formData,
+    });
+    const uploadFileData = await uploadFileFetch.json();
     const registerRestFetch = await fetch ('http://localhost:7500/registRest',{
         method:'POST',
         headers: {
@@ -111,8 +118,11 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
             name:credentils.nameRest,
             email:credentils.email,
             phone:credentils.celRest,
-            rangePrice: credentils.rangePrice
-
+            rangePrice: credentils.rangePrice,
+            country: credentils.country,
+            province: credentils.province,
+            university: credentils.university,
+            photo: uploadFileData.url
         })
     });
     const userData = await registerRestFetch.json();
@@ -128,7 +138,23 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
         }
     }
 })
-
+export const createProduct = createAsyncThunk('restaurants/createRestaurants', async ({ product, productPicture }) => {
+    const formData = new FormData();
+    formData.append ('file',productPicture);
+    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+        method: 'POST',
+        body: formData,
+    });
+    const productData = await uploadFileFetch.json();
+    if (uploadFileFetch.status === 200) {
+        return productData;
+    } else {
+        return {
+            error: true,
+            message: productData.error.message,
+        }
+    }
+});
 
 
 export const registerUser = createAsyncThunk('user/registerUser', async (credentils) => {
@@ -161,40 +187,15 @@ export const getRestaurants = createAsyncThunk('restuarant/getRestaurants',async
     const state = getState();
     const getRestaurantsFetch = await fetch ('http://localhost:7500/restaurants',{
     });
-    const userData = await getRestaurantsFetch.json();
-    if (getRestaurantsFetch.status===200){
-        return userData;
-    }
-    else {
-        return {
-            error:true,
-            message: userData.message
-        }
-    }
-})
-
-export const getRestaurantByID = createAsyncThunk('restuarant/getRestaurantByID', async (credentils) => {
-    console.log("entreeeee " + credentils.id);
-    const getRestaurantByIDfetch = await fetch('http://localhost:7500/getRestaurantByID',{
-        method:'POST',
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-            id:credentils.id
-        })
-    });
-    console.log("saliiiii");
-    const userData = await getRestaurantByIDfetch.json();
-    if (getRestaurantByIDfetch.status === 200){
-        return userData;
+    const productData = await getRestaurantsFetch.json();
+    if (getRestaurantsFetch.status === 200) {
+        return productData;
     } else {
         return {
             error: true,
-            message: userData.message
+            message: productData.error.message,
         }
     }
-})
-
+});
 
 export default userSlice.reducer;

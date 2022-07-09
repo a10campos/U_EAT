@@ -18,7 +18,6 @@ export default function RestaurantInfo() {
 
   return (
     <div className="flex flex-col h-screen">
-      <p>{restaurant.name}</p>
       <div>
         <Header></Header>
         

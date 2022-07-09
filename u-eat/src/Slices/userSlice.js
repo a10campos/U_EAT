@@ -48,27 +48,6 @@ const userSlice = createSlice({
                 state.success=true;
             }
         })
-        .addCase(getRestaurants.fulfilled,(state,action) => {
-            if(action.payload.error) {
-                state.errorMessage = action.payload.message;
-            }
-            else {
-                state.errorMessage = "";
-                state.restaurants = action.payload;
-            }
-        })
-        .addCase(getRestaurants.rejected,(state,action) =>{
-            state.restaurants = [];
-        })
-        .addCase(getRestaurantByID.fulfilled,(state,action)=>{
-            if (action.payload.error) {
-                state.errorMessage = action.payload.message;
-            }
-            else {
-                state.errorMessage= action.payload.message;
-                state.restaurant=action.payload;
-            }
-        })
     }
 
 });
@@ -182,20 +161,5 @@ export const registerUser = createAsyncThunk('user/registerUser', async (credent
         }
     }
 })
-
-export const getRestaurants = createAsyncThunk('restuarant/getRestaurants',async(credentils, {getState })=> {
-    const state = getState();
-    const getRestaurantsFetch = await fetch ('http://localhost:7500/restaurants',{
-    });
-    const productData = await getRestaurantsFetch.json();
-    if (getRestaurantsFetch.status === 200) {
-        return productData;
-    } else {
-        return {
-            error: true,
-            message: productData.error.message,
-        }
-    }
-});
 
 export default userSlice.reducer;

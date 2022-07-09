@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 export default function RestaurantInfo() {
   const {id} = useParams();
   const [restaurant,setRestaurant] = useState([]);
+  const [reviews,setReviews] = useState([]);
   useEffect (()=> {
     const getRestaurantById = async () => {
       const restaurantFetch = await fetch(`http://localhost:7500/restaurants/${id}`);
@@ -15,6 +16,15 @@ export default function RestaurantInfo() {
     getRestaurantById();
   },[]);
 
+    useEffect (()=> {
+      const getReviewsById = async () => {
+        const reviewsFetch = await fetch(`http://localhost:7500/restaurants/${id}/reviews`);
+        const reviewsData = await reviewsFetch.json();
+        setReviews(reviewsData);
+      }
+      getReviewsById();
+    },[]);
+    console.log(reviews);
 
   return (
     <div className="flex flex-col h-screen">

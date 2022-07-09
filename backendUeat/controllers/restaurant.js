@@ -44,7 +44,14 @@ exports.getRestaurantById = async (req,res) => {
 
 exports.getReviewByRestaurant = async (req,res) => {
     try {
-        res.json(reviews);
+        const restId = parseInt(req.params.id);
+        const result =[] ;
+        underscore.each(reviews,(review,i) => {
+            if (review.rest == restId) {
+                result.push(review);
+            }
+        });
+        res.json(result);
     } catch (error) {
         res.status(500).json("Error in the server" + error)
     }

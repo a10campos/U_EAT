@@ -1,5 +1,8 @@
 import {Link, Routes, Route, useNavigate} from 'react-router-dom';
-
+import {useState} from "react";
+import {useDispatch,useSelector} from "react-redux";
+import {registerUser} from "../../Slices/userSlice";
+import {Navigate} from "react-router-dom";
 
 //agregar use states para poder guardar el input del usuario
 
@@ -12,7 +15,22 @@ import {Link, Routes, Route, useNavigate} from 'react-router-dom';
 
 export default function Register() {
     const navigate = useNavigate();
-    return (
+    const [name,setName] = useState ("");
+    const [lastName, setLastName] = useState ("");
+    const [email,setEmail] = useState ("");
+    const [username, setUsername] = useState ("");
+    const [telephone,setTelephone] = useState ("");
+    const [password, setPassword] = useState ("");
+
+    const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
+    const errorMessage = useSelector((state) => state.user.errorMessage);
+    const dispatch = useDispatch();
+
+    return userIsLoggedIn ?(
+        <>
+            <Navigate to = "/MainPage"/>
+        </>
+    ):(
         //<div style={{height: '100vh', background: 'red'}}/>
         //<div className= "h-100 bg-theBlue"> Register</div>
         //<div className= " bg-theBlue" style={{height: '100vh'}}> Register</div> SIRVE
@@ -27,10 +45,8 @@ export default function Register() {
                     <input
                         placeholder="Nombre"
                         className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        //value={username}
-                        //onChange={(evt) => {
-                        //    setUsername(evt.target.value);
-                        //}}
+                        value={name}
+                        onChange = {(evt) => {setName(evt.target.value);}}
                     />
                 </div>
 
@@ -38,10 +54,8 @@ export default function Register() {
                     <input
                         placeholder="Apellido"
                         className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        //value={username}
-                        //onChange={(evt) => {
-                        //    setUsername(evt.target.value);
-                        //}}
+                        value={lastName}
+                        onChange = {(evt) => {setLastName(evt.target.value);}}
                     />
                 </div>
 
@@ -49,10 +63,8 @@ export default function Register() {
                     <input
                         placeholder="Correo"
                         className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        //value={username}
-                        //onChange={(evt) => {
-                        //    setUsername(evt.target.value);
-                        //}}
+                        value={email}
+                        onChange = {(evt) => {setEmail(evt.target.value);}}
                     />
                 </div>
             
@@ -60,10 +72,8 @@ export default function Register() {
                     <input
                         placeholder="Usuario"
                         className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        //value={username}
-                        //onChange={(evt) => {
-                        //    setUsername(evt.target.value);
-                        //}}
+                        value={username}
+                        onChange = {(evt) => {setUsername(evt.target.value);}}
                     />
                 </div>
 
@@ -71,10 +81,8 @@ export default function Register() {
                     <input
                         placeholder="Teléfono"
                         className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        //value={username}
-                        //onChange={(evt) => {
-                        //    setUsername(evt.target.value);
-                        //}}
+                        value={telephone}
+                        onChange = {(evt) => {setTelephone(evt.target.value);}}
                     />
                 </div>
 
@@ -82,38 +90,53 @@ export default function Register() {
                     <input
                         placeholder="Contraseña"
                         className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        //value={username}
-                        //onChange={(evt) => {
-                        //    setUsername(evt.target.value);
-                        //}}
+                        value={password}
+                        onChange = {(evt) => {setPassword(evt.target.value);}}
                     />
                 </div>
+                <div className=" flex flex-col items-center">
+                    {errorMessage && (<p id="mensajeError" className="text-white mt-14 invisible">{errorMessage}</p>)}
+                    <button className="mt-2 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
+                        onClick={() => { dispatch(registerUser({
+                            name, lastName, email, username, telephone, password
+                        }));
+                        document.getElementById("mensajeError").className = " text-white visible mt-14";
+                        }}
+                            
+                            /*
+                            if (username && password) {
+                            if (password.length < 8) {
+                                setLocalErrorMessage("La contraseña debe contener al menos 8 dígitos.");                
+                            }
+                            else {
+                                setLocalErrorMessage("");
+                                dispatch(
+                                postLogin({
+                                    username,
+                                    password,
+                                })
+                                );
+                            }
+                            }
+                            else {
+                            setLocalErrorMessage("Debe completar todos los campos");
+                            }
+                        */
+                    >
+                        Registrarse
+                    </button>
+                    <div className="flex mt-2 ">
+                        <p className= " w-fit rounded-md text-white text-sm font-bold">
+                            ¿Ya tiene una cuenta?
+                        </p>
 
-                <button className=" mt-14 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
-                    onClick={() => {
-                        /*
-                        if (username && password) {
-                        if (password.length < 8) {
-                            setLocalErrorMessage("La contraseña debe contener al menos 8 dígitos.");                
-                        }
-                        else {
-                            setLocalErrorMessage("");
-                            dispatch(
-                            postLogin({
-                                username,
-                                password,
-                            })
-                            );
-                        }
-                        }
-                        else {
-                        setLocalErrorMessage("Debe completar todos los campos");
-                        }
-                    */
-                    }}
-                >
-                    Registrarse
-                </button>
+                        <button className=" ml-1 w-fit rounded-md text-white text-sm font-bold hover:text-projectMustard"
+                                onClick={()=>navigate("/Login")}
+                        >
+                            Inicie sesión aquí
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )

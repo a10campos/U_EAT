@@ -32,12 +32,15 @@ function Login() {
                     <div>
                         <InputText placeHolder ="Contraseña" Type="password" values={password} fOnChange = {(evt) => {setPassword(evt.target.value);}}></InputText>
                     </div >
-                        {errorMessage && (<p className="text-white mt-2">{errorMessage}</p>)}
+                        {errorMessage && (<p id="mensajeError" className="text-white invisible mt-2">{errorMessage}</p>)}
+                        
                         <div className="mb-5 ml-auto mr-auto">
                             <Buttons colorB="bg-fondoBotonesA "text="Ingresar"
                             onClick={()=> { dispatch(postLogin({
                                 username,password
-                            }));}}/>
+                            }));
+                            document.getElementById("mensajeError").className = " text-white visible mt-2";
+                            }}/>
                         </div>
                     <div className="text-white ">
                         <p className="mb-2">¿Olvido su Contraseña?</p>

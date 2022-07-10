@@ -9,7 +9,7 @@ import {Link} from "react-router-dom"
 
     useEffect(()=>{
       const fetchRestaurants = async () => {
-        const restaurantsFetch = await fetch (`http://localhost:7500/restaurants?filter=${filter}`);
+        const restaurantsFetch = await fetch ("http://localhost:7500/restaurants");
         const resturantBody = await restaurantsFetch.json();
         setRestaurant(resturantBody);
       }

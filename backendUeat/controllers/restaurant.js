@@ -24,10 +24,8 @@ exports.registRest = async (req,res) => {
 exports.getRestaurants = async (req,res) => {
     try{
         var result = [];
-        const params = "San Jose";
-        console.log("Parametros: " + params);
+        const params = req.params.filter;
         if(params){
-            console.log("entre");
             underscore.each(restaurants,(rest,i) => {
                 if (rest.province == params){
                     result.push(rest);
@@ -36,7 +34,6 @@ exports.getRestaurants = async (req,res) => {
             res.json(result);
         }
         else {
-            console.log("De una todos");
             res.json(restaurants);
         }
     }

@@ -30,14 +30,11 @@ export default function RestaurantInfo() {
       }
       getReviewsById();
     },[]);
-    console.log(reviews);
   
     let areReviews = false;
     if(reviews.length !== 0){
       areReviews = true;
     }
-
-    console.log(areReviews);
 
   return (
     <div className="flex flex-col h-screen">
@@ -55,7 +52,7 @@ export default function RestaurantInfo() {
 
           <div className="flex justify-center">
             {/*Div de carrusel, falta hacerlo dinamico para que presente lo de un determinado restaurante*/}
-            <Carousel></Carousel>
+            <Carousel img={restaurant.photo}></Carousel>
           </div>
 
           <div className=" mt-10">
@@ -107,7 +104,7 @@ export default function RestaurantInfo() {
               areReviews?(
                 reviews.map((i) => {
                   return(
-                  <div className="w-8/12 flex flex-row space-x-8 justify-center items-center mb-4">
+                  <div className="w-8/12 flex flex-row space-x-8 justify-center items-center mb-4" key={i.id}>
                     <BsPersonCircle className=" h-24 w-24" fill={"#0b3c5d"}/>
                     <div className= "w-8/12 text-justify" >
                       <p className=" text-2xl font-bold">Anónimo</p>

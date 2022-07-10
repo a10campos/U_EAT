@@ -32,6 +32,7 @@ export default function RestaurantInfo() {
     },[]);
   
     let areReviews = false;
+
     if(reviews.length !== 0){
       areReviews = true;
     }

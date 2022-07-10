@@ -4,7 +4,6 @@ import {useDispatch,useSelector} from "react-redux";
 import {registerUser} from "../../Slices/userSlice";
 import {Navigate} from "react-router-dom";
 
-import Header from "../../Component/Header";
 
 //agregar use states para poder guardar el input del usuario
 
@@ -38,7 +37,6 @@ export default function Register() {
         //<div className= " bg-theBlue" style={{height: '100vh'}}> Register</div> SIRVE
         
         <>
-              <Header></Header>
        
         <div className= " flex items-center justify-center h-screen bg-projectBlue">
           

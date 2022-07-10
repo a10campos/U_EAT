@@ -2,6 +2,7 @@ import {useParams, useNavigate} from 'react-router-dom';
 import Header from "../../Component/Header"
 import Carousel from "../../Component/Carousel"
 import { useEffect, useState } from 'react';
+import { BsPersonCircle } from "react-icons/bs";
 
 export default function RestaurantInfo() {
   const {id} = useParams();
@@ -26,7 +27,13 @@ export default function RestaurantInfo() {
       getReviewsById();
     },[]);
     console.log(reviews);
+  
+    let areReviews = false;
+    if(reviews.length !== 0){
+      areReviews = true;
+    }
 
+    console.log(areReviews);
 
   return (
     <div className="flex flex-col h-screen">
@@ -34,7 +41,7 @@ export default function RestaurantInfo() {
         <Header></Header>
         
       </div>
-      <div className= " flex flex-1 justify-center text-center w-screen sm:bg-green-800">
+      <div className= " flex flex-1 justify-center text-center w-screen">
         {/*Div de informacion del*/}
         <div className="text-center w-screen">
           <div className=" mb-20">
@@ -58,7 +65,7 @@ export default function RestaurantInfo() {
             </div>
             <div className= "flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Precios:</p>
-              <p className=" text-xl text-projectBlack">{restaurant.rangePrice}</p>
+              <p className=" text-xl text-projectBlack">{restaurant.lowerPrice}-{restaurant.higherPrice}</p>
             </div>
             {/*falta agregar estrellas*/}
           </div>
@@ -80,10 +87,30 @@ export default function RestaurantInfo() {
             </div>
           </div>
 
-          <div className=" mt-8">
+          <div className="mt-10 mb-12 flex flex-1 flex-col items-center">
             {/*Div de las reseñas*/}
-            <h2 className="text-3xl font-bold text-projectBlue">Reseñas</h2>
+            <h2 className="mb-8 text-4xl font-bold text-projectBlue">Reseñas</h2>
             {/*Meter aqui las reseñas*/}
+
+            {
+              areReviews?(
+                reviews.map((i) => {
+                  return(
+                  <div className="w-8/12 flex flex-row space-x-8 justify-center items-center mb-4">
+                    <BsPersonCircle className=" h-24 w-24" fill={"#0b3c5d"}/>
+                    <div className= "w-8/12 text-justify" >
+                      <p className=" text-2xl font-bold">Anónimo</p>
+                      <p className=" text-xl"> {i.details}</p> 
+                    </div>      
+                  </div>
+                  )
+                  })
+              ):(
+                <div className="w-8/12 flex space-x-8 justify-center items-center mb-4">
+                  <p className=" text-xl w-8/12">Lo sentimos, aún no hay reseñas que mostrar para este restaurante</p>
+                </div>
+              )
+            }
           </div>
 
         </div>

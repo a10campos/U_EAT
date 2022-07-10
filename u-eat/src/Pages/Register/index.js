@@ -30,7 +30,7 @@ export default function Register() {
 
     return userIsLoggedIn ?(
         <>
-            <Navigate to = "/MainPage"/>
+            <Navigate to = "/"/>
         </>
     ):(
         //<div style={{height: '100vh', background: 'red'}}/>

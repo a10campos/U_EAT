@@ -47,8 +47,8 @@ exports.getRestaurantById = async (req,res) => {
 exports.getReviewByRestaurant = async (req,res) => {
     try {
         const restId = parseInt(req.params.id);
-        const result =[] ;
-        underscore.each(reviews,(review,i) => {
+        const result =[];
+        underscore.each(reviews,(review) => {
             if (review.restId == restId) {
                 result.push(review);
             }

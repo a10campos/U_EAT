@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../Component/Header";
 import Carousel from "../../Component/Carousel";
 import { useEffect, useState } from "react";
@@ -29,8 +29,6 @@ export default function RestaurantInfo() {
       }
       getReviewsById();
     },[]);
-    console.log(reviews);
-
 
   return (
     <div className="flex flex-col h-screen">

@@ -58,7 +58,7 @@ import {Mixpanel} from "../../services/mixpanel"
 
             <div className="flex justify-center text-center my-8">
                    <Buttons text="Enviar reseña"
-                   onClick={()=> { dispatch(sendReview({points, details}));
+                   onClick={()=> { dispatch(sendReview({points, details, id}));
                    navigate("/ReviewSent"); Mixpanel.track(Mixpanel.TYPES.ADD_REVIEW)}}/>
             </div>
         </div>

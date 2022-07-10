@@ -106,6 +106,7 @@ export default function Register() {
                             name, lastName, email, username, telephone, password
                         }));
                         document.getElementById("mensajeError").className = " text-white visible mt-14";
+                        navigate("/Login")
                         }}
                             
                             /*
@@ -130,16 +131,9 @@ export default function Register() {
                     >
                         Registrarse
                     </button>
-                    <div className="flex mt-2 ">
-                        <p className= " w-fit rounded-md text-white text-sm font-bold">
-                            ¿Ya tiene una cuenta?
-                        </p>
-
-                        <button className=" ml-1 w-fit rounded-md text-white text-sm font-bold hover:text-projectMustard"
-                                onClick={()=>navigate("/Login")}
-                        >
-                            Inicie sesión aquí
-                        </button>
+                    <div className="flex mt-2 mx-4">
+                    <a href="/register" className="text-white text-xl no-underline hover:underline ...">
+                        ¿Ya tiene una cuenta? Inicie sesión aquí</a>                     
                     </div>
                 </div>
             </div>

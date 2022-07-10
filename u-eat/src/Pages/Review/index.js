@@ -4,8 +4,9 @@ import {sendReview} from "../../Slices/reviewSlice";
 
 import { useState } from "react";
 import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
+import {Mixpanel} from "../../services/mixpanel"
 
   export default function Review() {
 
@@ -13,7 +14,8 @@ import {useNavigate} from "react-router-dom";
     const [details,setDetails] = useState ("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    const {id} = useParams();
+    
     return (
       <>
         <Header />
@@ -56,8 +58,8 @@ import {useNavigate} from "react-router-dom";
 
             <div className="flex justify-center text-center my-8">
                    <Buttons text="Enviar reseña"
-                   onClick={()=> { dispatch(sendReview({points, details}))
-                   ;navigate("/ReviewSent")}}/>
+                   onClick={()=> { dispatch(sendReview({points, details, id}));
+                   navigate("/ReviewSent"); Mixpanel.track(Mixpanel.TYPES.ADD_REVIEW)}}/>
             </div>
         </div>
       </>

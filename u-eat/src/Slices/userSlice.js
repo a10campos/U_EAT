@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from  "@reduxjs/toolkit";
+import { Mixpanel } from "../services/mixpanel";
 
 const userSlice = createSlice({
     name: 'user',
@@ -18,6 +19,11 @@ const userSlice = createSlice({
     extraReducers (builder) {
         builder.addCase(postLogin.fulfilled, (state,action) => {
             if (action.payload.error) {
+                Mixpanel.identify(action.payload.id);
+                Mixpanel.people.set({
+                    $name: action.payload.name,
+                    $email: action.payload.email,
+                })
                 state.userIsLoggedIn = false;
                 state.user = null;
                 state.errorMessage= action.payload.message;

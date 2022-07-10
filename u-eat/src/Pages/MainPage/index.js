@@ -2,6 +2,8 @@ import Header from "../../Component/Header";
 import Buttons from "../../Component/Buttons";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom"
+import {Mixpanel} from "../../services/mixpanel"
+import { isRejected } from "@reduxjs/toolkit";
   export default function MainPage() {
 
     const [restaurants,setRestaurant] = useState([]);
@@ -9,7 +11,7 @@ import {Link} from "react-router-dom"
 
     useEffect(()=>{
       const fetchRestaurants = async () => {
-        const restaurantsFetch = await fetch (`http://localhost:7500/restaurants?filter=${filter}`);
+        const restaurantsFetch = await fetch ("http://localhost:7500/restaurants");
         const resturantBody = await restaurantsFetch.json();
         setRestaurant(resturantBody);
       }
@@ -21,15 +23,25 @@ import {Link} from "react-router-dom"
           <Header></Header>
           <div className="h-screen font-sans text-projectBlack">
               <div className="flex  justify-center mt-4">
-                < Buttons text="Filtrar restaurantes"/> 
+              <Link to="/filter">
+              <Buttons text="Filtrar restaurantes" onclick={() => Mixpanel.track(Mixpanel.TYPES.FILTER_REST)}/>
+              </Link>
               </div>
           
               <div className="mt-4">
                   {
                   restaurants.map((i) => {
                       return (
-                      <Link to={`/restaurants/${i.id}`} key={`restaurants${i.id}`} >
-                        <div className="ml-4 w-screen items-center flex">
+                      <Link to={`/restaurants/${i.id}`} key={`restaurants${i.id}`}
+                      onClick={() => Mixpanel.track(Mixpanel.TYPES.VIEW_REST, {
+                          restName: i.name,
+                          restDistance: i.distance,
+                          restPrice: i.rangePrice,
+                          restPoints: i.points,
+                          restPhoto: i.photo
+                      } )} >
+                        <div className="ml-4 w-screen items-center flex"  
+                       >
                         <img src={i.photo} alt={i.name} className="object-contain h-44 w-44"/>  
                         <div >
                           <div className= "text-xl ml-4" >
@@ -39,7 +51,7 @@ import {Link} from "react-router-dom"
                             <p> Valoración: {i.points}</p> 
                           </div>      
                         </div>
-                     </div>
+                     </div>                    
                       </Link>  
                       )
                       })

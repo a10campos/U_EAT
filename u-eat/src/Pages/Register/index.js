@@ -4,7 +4,6 @@ import {useDispatch,useSelector} from "react-redux";
 import {registerUser} from "../../Slices/userSlice";
 import {Navigate} from "react-router-dom";
 
-import Header from "../../Component/Header";
 
 //agregar use states para poder guardar el input del usuario
 
@@ -38,7 +37,6 @@ export default function Register() {
         //<div className= " bg-theBlue" style={{height: '100vh'}}> Register</div> SIRVE
         
         <>
-              <Header></Header>
        
         <div className= " flex items-center justify-center h-screen bg-projectBlue">
           
@@ -108,6 +106,7 @@ export default function Register() {
                             name, lastName, email, username, telephone, password
                         }));
                         document.getElementById("mensajeError").className = " text-white visible mt-14";
+                        navigate("/Login")
                         }}
                             
                             /*
@@ -132,16 +131,9 @@ export default function Register() {
                     >
                         Registrarse
                     </button>
-                    <div className="flex mt-2 ">
-                        <p className= " w-fit rounded-md text-white text-sm font-bold">
-                            ¿Ya tiene una cuenta?
-                        </p>
-
-                        <button className=" ml-1 w-fit rounded-md text-white text-sm font-bold hover:text-projectMustard"
-                                onClick={()=>navigate("/Login")}
-                        >
-                            Inicie sesión aquí
-                        </button>
+                    <div className="flex mt-2 mx-4">
+                    <a href="/register" className="text-white text-xl no-underline hover:underline ...">
+                        ¿Ya tiene una cuenta? Inicie sesión aquí</a>                     
                     </div>
                 </div>
             </div>

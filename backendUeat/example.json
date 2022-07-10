@@ -30,5 +30,15 @@
         "img":"https://scontent-mia3-2.xx.fbcdn.net/v/t1.6435-9/29249653_1867862393237318_1048193034946084864_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dFa4pCMlswEAX_cAYu_&_nc_ht=scontent-mia3-2.xx&oh=00_AT9wwDvUHqKqeExvA1Y90tH_u3rWJLWvQRE7yjiiQWs_Ig&oe=62EA0288",
         "email":"daniela@gmail.com",
         "password":"1234"
+    },
+    {
+        "id":"5",
+        "name":"Daniel",
+        "lastName":"Calvo",
+        "img":"https://stickerly.pstatic.net/sticker_pack/Lj8OAn7LfLDvFNbKpISg/H8SSLG/35/2db8ef3f-5022-466c-a915-c225d09fd772.png",
+        "email":"daniel@gmail.com",
+        "password":"patito20"
     }
+
+    
 ]

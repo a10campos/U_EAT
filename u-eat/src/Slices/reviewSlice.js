@@ -25,7 +25,7 @@ export const sendReview = createAsyncThunk('review/sendReview',async(reviewInfo,
             "Content-type": "application/json"
         },
         body: JSON.stringify({
-            points: reviewInfo.points,
+            stars: reviewInfo.stars,
             details: reviewInfo.details,
             restId: reviewInfo.id
         })

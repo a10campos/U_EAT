@@ -1,13 +1,14 @@
 import Header from "../../Component/Header";
 import Buttons from "../../Component/Buttons";
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom"
+import {Link, useParams } from "react-router-dom"
 import {Mixpanel} from "../../services/mixpanel"
-import { isRejected } from "@reduxjs/toolkit";
   export default function MainPage() {
 
     const [restaurants,setRestaurant] = useState([]);
-    const [filter,setFilter] = useState([]);
+    const [reviews,setReviews] = useState([]);
+    const {id} = useParams();
+
 
     useEffect(()=>{
       const fetchRestaurants = async () => {
@@ -37,7 +38,7 @@ import { isRejected } from "@reduxjs/toolkit";
                           restName: i.name,
                           restDistance: i.distance,
                           restPrice: i.rangePrice,
-                          restPoints: i.points,
+                          reststars: i.stars,
                           restPhoto: i.photo
                       } )} >
                         <div className="ml-4 w-screen items-center flex"  
@@ -48,7 +49,7 @@ import { isRejected } from "@reduxjs/toolkit";
                             <p className="text-2xl font-bold">{i.name}</p>
                             <p> A {i.distance} metros</p> 
                             <p> ₡{i.rangePrice}</p> 
-                            <p> Valoración: {i.points}</p> 
+                            <p> Valoración: </p> 
                           </div>      
                         </div>
                      </div>                    

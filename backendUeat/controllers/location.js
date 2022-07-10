@@ -3,8 +3,8 @@
 // const restaurants = require('../universities.json');
 
 exports.sendReview = async (req,res) => {
-    const {points, details} = req.body;
-    if (points && details) {
+    const {stars, details} = req.body;
+    if (stars && details) {
         const id = reviews.length+1;
         const newReview = {id,...req.body};
         reviews.push(newReview);

@@ -9,8 +9,8 @@
        "lowerPrice": "1500",
        "higherPrice": "6000",
        "country":"Costa Rica",
-       "province":"",
-       "university":"",
+       "province":"1",
+       "university":"UCR",
        "photo": "https://d1ralsognjng37.cloudfront.net/e0d2af4d-f27b-4b83-9f0c-5c9c2e44f192"
     },
     {
@@ -22,6 +22,9 @@
        "rangePrice":"1000-6000",
        "lowerPrice": "1000",
        "higherPrice": "6000",
+       "country":"Costa Rica",
+       "province":"2",
+       "university":"UNA",
        "photo": "https://d1ralsognjng37.cloudfront.net/32557c3e-34e6-46f5-a82c-f6f1f1dd3d13.webp"
     },
     {
@@ -32,9 +35,10 @@
        "distance": "400",
        "lowerPrice": "1000",
        "higherPrice": "4500",
-       "country":"",
-       "province":"",
-       "university":"",
+       "rangePrice":"1000-4500",
+       "country":"1",
+       "province":"1",
+       "university":"UCR",
        "photo": "https://media-cdn.tripadvisor.com/media/photo-s/03/8e/04/68/super-buffet.jpg"
     },
     {
@@ -45,9 +49,10 @@
        "distance": "700",
        "lowerPrice": "3500",
        "higherPrice": "8000",
-       "country":"",
-       "province":"",
-       "university":"",
+       "rangePrice":"3500-8000",
+       "country":"1",
+       "province":"2",
+       "university":"UNA",
        "photo": "https://d1ralsognjng37.cloudfront.net/6734f918-f9b5-4702-8287-4c382d0923b9.jpeg"
     },
     {
@@ -58,9 +63,10 @@
        "distance": "600",
        "lowerPrice": "2500",
        "higherPrice": "7000",
-       "country":"",
-       "province":"",
-       "university":"",    
+       "rangePrice":"2500-7000",
+       "country":"1",
+       "province":"1",
+       "university":"UCR",    
        "photo": "https://images.happycow.net/venues/1024/19/96/hcmp199685_1181281.jpeg"
     }
  ]

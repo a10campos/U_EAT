@@ -10,7 +10,7 @@ import {Mixpanel} from "../../services/mixpanel"
 
   export default function Review() {
 
-    const [points,setPoints] = useState ("");
+    const [stars,setstars] = useState ("");
     const [details,setDetails] = useState ("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -38,8 +38,8 @@ import {Mixpanel} from "../../services/mixpanel"
                 type="number"
                 label="Ingrese un número del 1 al 5"               
                 className="px-4 h-[40px] sm:w-96 rounded-md border border-projectBlue"
-                value={points}
-                onChange={(evt) => {setPoints(evt.target.value);}}
+                value={stars}
+                onChange={(evt) => {setstars(evt.target.value);}}
                 
               />          
             </div>
@@ -58,7 +58,7 @@ import {Mixpanel} from "../../services/mixpanel"
 
             <div className="flex justify-center text-center my-8">
                    <Buttons text="Enviar reseña"
-                   onClick={()=> { dispatch(sendReview({points, details, id}));
+                   onClick={()=> { dispatch(sendReview({stars, details, id}));
                    navigate("/ReviewSent"); Mixpanel.track(Mixpanel.TYPES.ADD_REVIEW)}}/>
             </div>
         </div>

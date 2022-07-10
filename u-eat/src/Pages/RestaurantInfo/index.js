@@ -2,7 +2,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import Header from "../../Component/Header";
 import Carousel from "../../Component/Carousel";
 import { useEffect, useState } from "react";
-import {Mixpanel} from "../../services/mixpanel"
 
 export default function RestaurantInfo() {
   const {id} = useParams();

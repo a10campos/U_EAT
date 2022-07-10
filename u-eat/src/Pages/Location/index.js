@@ -8,7 +8,6 @@ const _countries = require('./countries.json');
 const _states = require('./states.json');
 const _unis = require('./universities.json');
 
-
 function Location() {
   const [country, setCountry] = useState([]);
   const [state, setState] = useState([]);
@@ -88,7 +87,7 @@ function Location() {
         </select>
       </div>
       <div className="flex justify-center mx-10 my-3">
-        <Link to="/MainPage">
+        <Link to="/">
           <button className="bg-projectMustard text-white text-3xl 
             font-bold rounded-md h-[48px] w-80 mt-16 mb-10"   onClick={()=> { dispatch(chooseLocation({
               country, state, university}));}}>

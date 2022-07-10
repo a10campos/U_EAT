@@ -77,14 +77,14 @@ function RegisterRest({
                         <InputText placeHolder = "Universidad" values={university} fOnChange={(evt) => {setUniversity(evt.target.value);}} />
                     </div>
                     <div>
-                        <InputButton buttonColor="bg-white" textButton ="Agregar Menu"/>
+                        <InputButton buttonColor="bg-white" colorText="black" textButton ="Agregar Menu"/>
 
                     </div>
                         <InputButton fOnChange={(evt) => 
-                        setProductPicture(evt.target.files[0])} buttonColor="bg-white" textButton ="Agregar Foto"/>
+                        setProductPicture(evt.target.files[0])} buttonColor="bg-white" colorText="black" textButton ="Agregar Foto"/>
                         {errorMessage && (<p className="text-white mt-2">{errorMessage}</p>)}
                         {restuarantPicture && (
-                            <img className=" justify-center [h-200px] w-[200px]" src={URL.createObjectURL(restuarantPicture)}/>
+                            <img className=" justify-center [h-200px] w-[200px]" alt="restPhoto" src={URL.createObjectURL(restuarantPicture)}/>
                         )}
                     <div>
                         <Buttons text="Registrar"onClick={()=> { dispatch(registRest({

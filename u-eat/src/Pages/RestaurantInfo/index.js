@@ -8,6 +8,7 @@ export default function RestaurantInfo() {
   const navigate = useNavigate();
   const [restaurant,setRestaurant] = useState([]);
   const [reviews,setReviews] = useState([]);
+  
   useEffect (()=> {
     const getRestaurantById = async () => {
       const restaurantFetch = await fetch(`http://localhost:7500/restaurants/${id}`);
@@ -73,7 +74,7 @@ export default function RestaurantInfo() {
             </div>
             <div>
               <button className="h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
-                onClick={() => {navigate("/Review")  }}
+                onClick={() => {navigate("{}/Review")  }}
               >
                 Agregar Reseña
               </button>

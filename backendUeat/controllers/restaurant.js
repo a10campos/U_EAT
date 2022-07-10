@@ -1,6 +1,6 @@
 const restaurants = require('../restaurant.json');
 const underscore = require("underscore");
-const reviews = require("../reviews.json");
+const reviews = require("../review.json");
 const { sendWelcomeEmail } = require('../services/mailService');
 const { find } = require('underscore');
 
@@ -49,7 +49,7 @@ exports.getReviewByRestaurant = async (req,res) => {
         const restId = parseInt(req.params.id);
         const result =[] ;
         underscore.each(reviews,(review,i) => {
-            if (review.rest == restId) {
+            if (review.restId == restId) {
                 result.push(review);
             }
         });

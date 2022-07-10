@@ -12,7 +12,7 @@ exports.registRest = async (req,res) => {
         restaurants.push(newRestaurant);
         console.log(restaurants);
         const newrest = JSON.stringify(newRestaurant)
-        //await sendWelcomeEmail(email,name);
+        await sendWelcomeEmail(newRestaurant);
         res.status(204).send();
     }
     else {
@@ -23,7 +23,19 @@ exports.registRest = async (req,res) => {
 
 exports.getRestaurants = async (req,res) => {
     try{
-        res.json(restaurants);
+        var result = [];
+        const params = req.params.filter;
+        if(params){
+            underscore.each(restaurants,(rest,i) => {
+                if (rest.province == params){
+                    result.push(rest);
+                }
+            });
+            res.json(result);
+        }
+        else {
+            res.json(restaurants);
+        }
     }
     catch(error){
         res.status(500).json({message:"Error al traer los restaurantes"});

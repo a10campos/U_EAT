@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <div className={`bg-${bgColor}`}>
       <div className="flex h-16 w-screen items-center  font-sans">
-        <div className="flex w-1/4 mx-4 justify-start">
+        <div className="flex w-1/4 mx-4 justify-start md:ml-16">
           <IoIosArrowBack
             className="h-10 w-10 cursor-pointer"
             fill={`${iconColor}`}
@@ -43,7 +43,7 @@ export default function Header() {
           </Link>
         
         </div>
-        <div className="flex w-1/4 mx-4 justify-end">
+        <div className="flex w-1/4 mx-4 justify-end md:mr-16">
           <Link to ="/Perfil">
           <BsPersonCircle
             onClick={() =>  Mixpanel.track(Mixpanel.TYPES.OPEN_PROFILE)}

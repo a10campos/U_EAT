@@ -1,8 +1,10 @@
 import {useNavigate} from 'react-router-dom';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
-import {registerUser} from "../../Slices/userSlice";
+import {registerUser, logout} from "../../Slices/userSlice";
 import {Navigate} from "react-router-dom";
+import InputText from "../../Component/InputText";
+import Buttons from "../../Component/Buttons";
 
 
 //agregar use states para poder guardar el input del usuario
@@ -23,9 +25,14 @@ export default function Register() {
     const [telephone,setTelephone] = useState ("");
     const [password, setPassword] = useState ("");
 
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+          dispatch(logout());
+      },[dispatch]);
+
     const userIsLoggedIn = useSelector((state) => state.user.userIsLoggedIn);
     const errorMessage = useSelector((state) => state.user.errorMessage);
-    const dispatch = useDispatch();
 
     return userIsLoggedIn ?(
         <>
@@ -38,102 +45,39 @@ export default function Register() {
         
         <>
        
-        <div className= " flex items-center justify-center h-screen bg-projectBlue">
+        <div className= " flex items-center justify-center h-screen bg-projectBlue w-screen">
           
-            <div className="text-center w-screen">
+            <div className="flex flex-col mt-10 items-center text-center w-7/12 space-y-4">
                 <div className=" mb-20">
                     <h1 className="text-3xl font-bold text-white">Registro</h1>
                 </div>
+                <InputText placeHolder ="Nombre" Type="text" values={name}  fOnChange = {(evt) => {setName(evt.target.value);}}/>
 
+                <InputText placeHolder ="Apellido" Type="text" values={lastName}  fOnChange = {(evt) => {setLastName(evt.target.value);}}/>
 
-                <div className="mb-4">
-                    <input
-                        placeholder="Nombre"
-                        className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        value={name}
-                        onChange = {(evt) => {setName(evt.target.value);}}
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <input
-                        placeholder="Apellido"
-                        className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        value={lastName}
-                        onChange = {(evt) => {setLastName(evt.target.value);}}
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <input
-                        placeholder="Correo"
-                        className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        value={email}
-                        onChange = {(evt) => {setEmail(evt.target.value);}}
-                    />
-                </div>
+                <InputText placeHolder ="Correo" Type="email" values={email}  fOnChange = {(evt) => {setEmail(evt.target.value);}}/>
             
-                <div className="mb-4">
-                    <input
-                        placeholder="Usuario"
-                        className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        value={username}
-                        onChange = {(evt) => {setUsername(evt.target.value);}}
-                    />
-                </div>
+                <InputText placeHolder ="Usuario" Type="text" values={username}  fOnChange = {(evt) => {setUsername(evt.target.value);}}/>
 
-                <div className="mb-4">
-                    <input
-                        placeholder="Teléfono"
-                        className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        value={telephone}
-                        onChange = {(evt) => {setTelephone(evt.target.value);}}
-                    />
-                </div>
+                <InputText placeHolder ="Teléfono" Type="text" values={telephone}  fOnChange = {(evt) => {setTelephone(evt.target.value);}}/>
 
-                <div className="mb-4">
-                    <input
-                        placeholder="Contraseña"
-                        className={`placeholder:text-black pl-4 h-[48px] w-7/12 sm:w-96 rounded-md `}
-                        value={password}
-                        onChange = {(evt) => {setPassword(evt.target.value);}}
-                    />
-                </div>
+                <InputText placeHolder ="Contraseña" Type="password" values={password}  fOnChange = {(evt) => {setPassword(evt.target.value);}}/>
+
                 <div className=" flex flex-col items-center">
-                    {errorMessage && (<p id="mensajeError" className="text-white mt-14 invisible">{errorMessage}</p>)}
-                    <button className="mt-2 h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
+                    {errorMessage && (<p id="mensajeError" className="text-white mt-14 ">{errorMessage}</p>)}
+                    <Buttons colorB="bg-fondoBotonesA "text="Ingresar"
                         onClick={() => { dispatch(registerUser({
                             name, lastName, email, username, telephone, password
                         }));
-                        document.getElementById("mensajeError").className = " text-white visible mt-14";
-                        navigate("/Login")
+                        //document.getElementById("mensajeError").className = " text-white visible mt-14";
+                        //navigate("/Login")}
                         }}
-                            
-                            /*
-                            if (username && password) {
-                            if (password.length < 8) {
-                                setLocalErrorMessage("La contraseña debe contener al menos 8 dígitos.");                
-                            }
-                            else {
-                                setLocalErrorMessage("");
-                                dispatch(
-                                postLogin({
-                                    username,
-                                    password,
-                                })
-                                );
-                            }
-                            }
-                            else {
-                            setLocalErrorMessage("Debe completar todos los campos");
-                            }
-                        */
-                    >
-                        Registrarse
-                    </button>
-                    <div className="flex mt-2 mx-4">
-                    <a href="/register" className="text-white text-xl no-underline hover:underline ...">
-                        ¿Ya tiene una cuenta? Inicie sesión aquí</a>                     
+                    />
+                    <div className="flex mt-8 mx-4 ">
+                    <a href="/login" className="text-white text-xl no-underline hover:underline ...">
+                        <div>¿Ya tiene una cuenta?</div>
+                        <div>Inicie sesión aquí</div>
+                    </a>
                     </div>
                 </div>
             </div>

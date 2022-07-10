@@ -17,12 +17,12 @@ const getTransporter = function () {
     return transporter;
 }
 
-exports.sendWelcomeEmail = async(userEmail,nombreRest) => {
+exports.sendWelcomeEmail = async(restaurant) => {
     let transporter = getTransporter();
     await transporter.sendMail({
         from: "eb0tpru@hotmail.com",
-        to: userEmail,
+        to: restaurant.email,
         subject: "Confirmación de registro de restaurante",
-        text: "Muchas gracias por registrar el restaurante " + nombreRest + " en nuestra página"
+        text: "Muchas gracias por registrar el restaurante " + restaurant.name  + " en nuestra página" +  "\n Ubicado en: " + restaurant.country + ", " + restaurant.province + ".\n  Cerca de la : " + restaurant.university + "."
     })
 }

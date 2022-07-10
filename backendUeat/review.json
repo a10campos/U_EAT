@@ -17,5 +17,23 @@
         "stars": "5",
         "details": "Servicio muy rápido y muy buena comida",
         "restId": "3"
+     },
+     {
+         "id":4, 
+        "stars": "4",
+        "details": "Excelente la atencion al cliente, mi hijo recibió hasta un librito para pintar con crayones",
+        "restId": "3"
+     },
+     {
+         "id":1, 
+        "stars": "5",
+        "details": "Me encanta el chino y me encanta este restaurante. Si es cierto que los precios subieron, pero la calidad de la comida vale totalmente su precio.",
+        "restId": "2"
+     },
+     {
+         "id":2, 
+        "stars": "4",
+        "details": "Este restaurante es ideal para trabajar. Muy buen internet, comida barata y es un buffet, por lo que todo mundo come lo que se le antoja",
+        "restId": "3"
      }
 ]

@@ -52,7 +52,7 @@ exports.registerUser = async (req,res) => {
         }
     }
     else {
-        res.status(401).json({message:"Faltan campos por completar :)"});
+        res.status(401).json({message:"Faltan campos por completar"});
     }
 
 };

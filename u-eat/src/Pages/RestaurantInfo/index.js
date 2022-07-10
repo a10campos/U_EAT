@@ -7,11 +7,7 @@ export default function RestaurantInfo() {
   const {id} = useParams();
   const navigate = useNavigate();
   const [restaurant,setRestaurant] = useState([]);
-<<<<<<< HEAD
   const [reviews,setReviews] = useState([]);
-=======
-
->>>>>>> 581cd61200565fae91aaa37c54379d34983cd6f8
   useEffect (()=> {
     const getRestaurantById = async () => {
       const restaurantFetch = await fetch(`http://localhost:7500/restaurants/${id}`);

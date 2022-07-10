@@ -45,7 +45,7 @@ export default function RestaurantInfo() {
       <div className= " flex flex-1 justify-center text-center w-screen">
         {/*Div de informacion del*/}
         <div className="text-center w-screen">
-          <div className=" mb-20">
+          <div className=" my-10">
             <h1 className="text-5xl font-bold text-projectBlack">
               {restaurant.name}
             </h1>

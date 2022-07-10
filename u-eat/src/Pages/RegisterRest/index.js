@@ -81,7 +81,7 @@ function RegisterRest({
 
                     </div>
                         <InputButton fOnChange={(evt) => 
-                        setProductPicture(evt.target.files[0])} buttonColor="bg-white" textButton ="Agregar Foto"/>
+                        setProductPicture(evt.target.files[0])}  colorText="text-red"buttonColor="bg-white" textButton ="Agregar Foto"/>
                         {errorMessage && (<p className="text-white mt-2">{errorMessage}</p>)}
                         {restuarantPicture && (
                             <img className=" justify-center [h-200px] w-[200px]" src={URL.createObjectURL(restuarantPicture)}/>

@@ -3,15 +3,13 @@ import Buttons from "../../Component/Buttons";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom"
 import {Mixpanel} from "../../services/mixpanel"
-import { isRejected } from "@reduxjs/toolkit";
   export default function MainPage() {
 
     const [restaurants,setRestaurant] = useState([]);
-    const [filter,setFilter] = useState([]);
-
+    const [filter,setFilter] = useState(" ");
     useEffect(()=>{
       const fetchRestaurants = async () => {
-        const restaurantsFetch = await fetch ("http://localhost:7500/restaurants");
+        const restaurantsFetch = await fetch (`http://localhost:7500/restaurants?filter=${filter}`);
         const resturantBody = await restaurantsFetch.json();
         setRestaurant(resturantBody);
       }

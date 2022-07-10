@@ -23,7 +23,22 @@ exports.registRest = async (req,res) => {
 
 exports.getRestaurants = async (req,res) => {
     try{
-        res.json(restaurants);
+        var result = [];
+        const params = "San Jose";
+        console.log("Parametros: " + params);
+        if(params){
+            console.log("entre");
+            underscore.each(restaurants,(rest,i) => {
+                if (rest.province == params){
+                    result.push(rest);
+                }
+            });
+            res.json(result);
+        }
+        else {
+            console.log("De una todos");
+            res.json(restaurants);
+        }
     }
     catch(error){
         res.status(500).json({message:"Error al traer los restaurantes"});

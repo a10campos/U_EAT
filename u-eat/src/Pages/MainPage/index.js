@@ -7,7 +7,7 @@ import {Mixpanel} from "../../services/mixpanel"
   export default function MainPage() {
 
     const [restaurants,setRestaurant] = useState([]);
-    const [filter] = useState(" ");
+    const [filter] = useState("San Jose");
 
     useEffect(()=>{
       const fetchRestaurants = async () => {

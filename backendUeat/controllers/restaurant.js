@@ -24,7 +24,8 @@ exports.registRest = async (req,res) => {
 exports.getRestaurants = async (req,res) => {
     try{
         var result = [];
-        const params = req.params.filter;
+        const params = req.query.filter;
+        console.log(params);
         if(params){
             underscore.each(restaurants,(rest,i) => {
                 if (rest.province == params){

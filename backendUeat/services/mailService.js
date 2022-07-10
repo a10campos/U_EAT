@@ -22,7 +22,7 @@ exports.sendWelcomeEmail = async(userEmail,nombreRest) => {
     await transporter.sendMail({
         from: "eb0tpru@hotmail.com",
         to: userEmail,
-        subject: "Confirmacion de registro de restaurante",
-        text: "Muchas gracias por registrar el restaurante en" + nombreRest + " en nuestra pagina"
+        subject: "Confirmación de registro de restaurante",
+        text: "Muchas gracias por registrar el restaurante " + nombreRest + " en nuestra página"
     })
 }

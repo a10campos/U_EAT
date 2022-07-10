@@ -1,5 +1,6 @@
 import Buttons from "../../Component/Buttons";
 import InputText from "../../Component/InputText";
+import Header from "../../Component/Header";
 import  {useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
@@ -15,6 +16,7 @@ function Login() {
 
     return userIsLoggedIn ? (
         <>
+            <Header></Header>
             <Navigate to = "/"/>
 
             <button className="bg-fondoBotonesA"

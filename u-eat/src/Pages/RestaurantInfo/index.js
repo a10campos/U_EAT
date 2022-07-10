@@ -1,12 +1,17 @@
-import {Link, Routes, Route, useNavigate, useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import Header from "../../Component/Header"
 import Carousel from "../../Component/Carousel"
 import { useEffect, useState } from 'react';
 
 export default function RestaurantInfo() {
   const {id} = useParams();
+  const navigate = useNavigate();
   const [restaurant,setRestaurant] = useState([]);
+<<<<<<< HEAD
   const [reviews,setReviews] = useState([]);
+=======
+
+>>>>>>> 581cd61200565fae91aaa37c54379d34983cd6f8
   useEffect (()=> {
     const getRestaurantById = async () => {
       const restaurantFetch = await fetch(`http://localhost:7500/restaurants/${id}`);
@@ -25,6 +30,7 @@ export default function RestaurantInfo() {
       getReviewsById();
     },[]);
     console.log(reviews);
+
 
   return (
     <div className="flex flex-col h-screen">
@@ -65,18 +71,13 @@ export default function RestaurantInfo() {
             {/*Div de los botones*/}
             <div>
               <button className="h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
-                onClick={() => {
-
-                }}
-              >
+                onClick={()=> {}}>
               Ver menú
               </button>
             </div>
             <div>
               <button className="h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
-                onClick={() => {
-
-                }}
+                onClick={() => {navigate("/Review")  }}
               >
                 Agregar Reseña
               </button>

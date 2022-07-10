@@ -33,10 +33,12 @@ const upload = multer({
 
 const userRoutes = require("./routes/user");
 const restRoutes = require("./routes/restaurant");
+const reviewRoutes = require("./routes/review");
 
 //Mount Routes 
 server.use(userRoutes);
 server.use(restRoutes);
+server.use(reviewRoutes);
 
 server.post("/upload",upload.single("file"), function(req, res){
     const file = req.file;

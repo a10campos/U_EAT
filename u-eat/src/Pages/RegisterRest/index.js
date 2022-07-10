@@ -6,6 +6,7 @@ import InputButton from "../../Component/InputButtons";
 import InputText from "../../Component/InputText";
 import PopUp from "../../Component/PopUp";
 import {registRest,createProduct} from "../../Slices/userSlice";
+import Header from "../../Component/Header";
 
 const options = [
     {value:"Rapida", label:"Rapida"},
@@ -43,18 +44,19 @@ function RegisterRest({
     };*/
     return(
             <> 
+            <Header></Header>
             {success ? (
                 <PopUp/>
 
             ) : (
             <div className="flex items-center justify-center bg-fondoPrincipal h-screen">
                 <div className="text-center">
-                    <h1 className="text-4xl mt-10 mb-5 text-white"><b>Registrar <br></br>Restaurante</b></h1>
+                    <h1 className="text-4xl  mb-5 text-white"><b>Registrar <br></br>Restaurante</b></h1>
                     <div>
                         <InputText placeHolder = "Nombre" values={nameRest} fOnChange={(evt) => {setNameRest(evt.target.value);}}/>
                     </div>
                     <div>
-                        <InputText placeHolder = "Correo" values={email}  values={email} fOnChange={(evt) => {setEmail(evt.target.value);}}/>
+                        <InputText placeHolder = "Correo" values={email} fOnChange={(evt) => {setEmail(evt.target.value);}}/>
                     </div>
                     <div>
                         <InputText placeHolder = "Telefono" Type="Tel"  values={celRest} fOnChange={(evt) => {setCelRest(evt.target.value);}}/>

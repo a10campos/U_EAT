@@ -2,6 +2,7 @@ const restaurants = require('../restaurant.json');
 const underscore = require("underscore");
 const reviews = require("../reviews.json");
 const { sendWelcomeEmail } = require('../services/mailService');
+const { find } = require('underscore');
 
 exports.registRest = async (req,res) => {
     const {name, email,phone,rangePrice,country,province,university} = req.body;
@@ -19,12 +20,13 @@ exports.registRest = async (req,res) => {
     }
 
 };
+
 exports.getRestaurants = async (req,res) => {
     try{
         res.json(restaurants);
     }
     catch(error){
-        res.status(500).json({message:"Error al traer loa restaurantes"});
+        res.status(500).json({message:"Error al traer los restaurantes"});
     }
 };
 exports.getRestaurantById = async (req,res) => {

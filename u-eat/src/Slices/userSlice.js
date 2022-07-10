@@ -44,21 +44,9 @@ const userSlice = createSlice({
                 state.errorMessage = action.payload.message;
             }
             else {
-                state.errorMessage="!Su cuenta se ha creado con exito! Por favor diríjase a la página de inicio de sesión";
+                state.errorMessage= action.payload.message;
                 state.success=true;
             }
-        })
-        .addCase(getRestaurants.fulfilled,(state,action) => {
-            if(action.payload.error) {
-                state.errorMessage = action.payload.message;
-            }
-            else {
-                state.errorMessage = "";
-                state.restaurants = action.payload;
-            }
-        })
-        .addCase(getRestaurants.rejected,(state,action) =>{
-            state.restaurants = [];
         })
     }
 
@@ -149,7 +137,7 @@ export const createProduct = createAsyncThunk('restaurants/createRestaurants', a
 
 
 export const registerUser = createAsyncThunk('user/registerUser', async (credentils) => {
-    const loginfetch = await fetch('http://localhost:7500/registerUser',{
+    const registerUserfetch = await fetch('http://localhost:7500/registerUser',{
         method:'POST',
         headers: {
             "Content-type": "application/json"
@@ -163,8 +151,8 @@ export const registerUser = createAsyncThunk('user/registerUser', async (credent
             password:credentils.password
         })
     });
-    const userData = await loginfetch.json();
-    if (loginfetch.status === 200){
+    const userData = await registerUserfetch.json();
+    if (registerUser.status === 200){
         return userData;
     } else {
         return {
@@ -173,20 +161,5 @@ export const registerUser = createAsyncThunk('user/registerUser', async (credent
         }
     }
 })
-
-export const getRestaurants = createAsyncThunk('restuarant/getRestaurants',async(credentils, {getState })=> {
-    const state = getState();
-    const getRestaurantsFetch = await fetch ('http://localhost:7500/restaurants',{
-    });
-    const productData = await getRestaurantsFetch.json();
-    if (getRestaurantsFetch.status === 200) {
-        return productData;
-    } else {
-        return {
-            error: true,
-            message: productData.error.message,
-        }
-    }
-});
 
 export default userSlice.reducer;

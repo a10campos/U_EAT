@@ -20,7 +20,7 @@ import {Link} from "react-router-dom"
         <div>
           <Header></Header>
           <div className="h-screen font-sans text-projectBlack">
-              <div className="flex w-screen justify-center mt-4">
+              <div className="flex  justify-center mt-4">
                 < Buttons text="Filtrar restaurantes"/> 
               </div>
           
@@ -36,6 +36,7 @@ import {Link} from "react-router-dom"
                             <p className="text-2xl font-bold">{i.name}</p>
                             <p> A {i.distance} metros</p> 
                             <p> ₡{i.rangePrice}</p> 
+                            <p> Valoración: {i.points}</p> 
                           </div>      
                         </div>
                      </div>

@@ -1,8 +1,10 @@
-import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
 import {registerUser} from "../../Slices/userSlice";
 import {Navigate} from "react-router-dom";
+
+import Header from "../../Component/Header";
 
 //agregar use states para poder guardar el input del usuario
 
@@ -34,7 +36,12 @@ export default function Register() {
         //<div style={{height: '100vh', background: 'red'}}/>
         //<div className= "h-100 bg-theBlue"> Register</div>
         //<div className= " bg-theBlue" style={{height: '100vh'}}> Register</div> SIRVE
+        
+        <>
+              <Header></Header>
+       
         <div className= " flex items-center justify-center h-screen bg-projectBlue">
+          
             <div className="text-center w-screen">
                 <div className=" mb-20">
                     <h1 className="text-3xl font-bold text-white">Registro</h1>
@@ -139,6 +146,7 @@ export default function Register() {
                 </div>
             </div>
         </div>
+        </>
     )
   }
 

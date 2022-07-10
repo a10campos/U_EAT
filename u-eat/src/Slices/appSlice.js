@@ -11,7 +11,7 @@ const appSlice = createSlice ({
         },
         stopLoading: (state) => {
             state.loading = false;
-        }
+        },
     }
 })
 

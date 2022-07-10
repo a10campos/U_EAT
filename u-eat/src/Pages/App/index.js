@@ -24,7 +24,7 @@ export default function App() {
       <Route element={<PrivateRoute/> }>
         <Route path ="registerRest" element={<RegisterRest/>}></Route>
         <Route path="/perfil" element={<Perfil />}></Route>
-        <Route path ="review" element={<Review/>}></Route>
+        <Route path ="restaurants/:id/review" element={<Review/>}></Route>
         <Route path ="reviewSent" element={<ReviewSent/>}></Route>
       </Route>
     </Routes>

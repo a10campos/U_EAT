@@ -1,8 +1,8 @@
 const reviews = require('../review.json');
 
 exports.sendReview = async (req,res) => {
-    const {points, details} = req.body;
-    if (points && details) {
+    const {points, details,restId} = req.body;
+    if (points && details && restId) {
         const id = reviews.length+1;
         const newReview = {id,...req.body};
         reviews.push(newReview);

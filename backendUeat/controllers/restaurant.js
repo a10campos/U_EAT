@@ -1,6 +1,6 @@
 const restaurants = require('../restaurant.json');
 const underscore = require("underscore");
-const reviews = require("../reviews.json");
+const reviews = require("../review.json");
 const { sendWelcomeEmail } = require('../services/mailService');
 const { find } = require('underscore');
 
@@ -46,7 +46,14 @@ exports.getRestaurantById = async (req,res) => {
 
 exports.getReviewByRestaurant = async (req,res) => {
     try {
-        res.json(reviews);
+        const restId = parseInt(req.params.id);
+        const result =[] ;
+        underscore.each(reviews,(review,i) => {
+            if (review.restId == restId) {
+                result.push(review);
+            }
+        });
+        res.json(result);
     } catch (error) {
         res.status(500).json("Error in the server" + error)
     }

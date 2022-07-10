@@ -4,7 +4,7 @@ import {sendReview} from "../../Slices/reviewSlice";
 
 import { useState } from "react";
 import {useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 import {Mixpanel} from "../../services/mixpanel"
 
@@ -14,7 +14,8 @@ import {Mixpanel} from "../../services/mixpanel"
     const [details,setDetails] = useState ("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    const {id} = useParams();
+    
     return (
       <>
         <Header />

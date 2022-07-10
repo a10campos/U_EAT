@@ -27,12 +27,10 @@ export const sendReview = createAsyncThunk('review/sendReview',async(reviewInfo,
         body: JSON.stringify({
             points: reviewInfo.points,
             details: reviewInfo.details,
-            userId: reviewInfo.userId
+            restId: reviewInfo.id
         })
     });
-
     const ReviewData = await sendReviewFetch.json();
-
     if (sendReviewFetch.status===200){
         return ReviewData;
     }

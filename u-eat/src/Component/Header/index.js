@@ -1,6 +1,7 @@
 import { BsPersonCircle } from "react-icons/bs";
 import { IoIosArrowBack } from "react-icons/io";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import {Mixpanel} from "../../services/mixpanel"
 
 //pasar propiedad
 export default function Header() {
@@ -34,19 +35,24 @@ export default function Header() {
           />
         </div>
         <div className="flex w-2/4 mx-8 justify-center">
-          <p
-            className={`text-4xl font-bold tracking-widest text-${textColor}`}
-          >
-            {" "}
-            U EAT{" "}
+          <Link to ="/">
+          <p className={`text-4xl font-bold tracking-widest text-${textColor}`} 
+           onClick={() => Mixpanel.track(Mixpanel.TYPES.GO_TO_MAIN) } >
+            {" "}U EAT{" "}
           </p>
+          </Link>
+        
         </div>
         <div className="flex w-1/4 mx-4 justify-end">
+          <Link to ="/Perfil">
           <BsPersonCircle
-            onClick={() => navigate("/Perfil")}
+            onClick={() =>  Mixpanel.track(Mixpanel.TYPES.OPEN_PROFILE)}
             className="h-12 w-12 cursor-pointer"
             fill={`${iconColor}`}
-          />
+            />
+          </Link>
+         
+         
         </div>
       </div>
     </div>

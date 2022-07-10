@@ -6,6 +6,7 @@ import { useState } from "react";
 import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
 
+import {Mixpanel} from "../../services/mixpanel"
 
   export default function Review() {
 
@@ -57,9 +58,8 @@ import {useNavigate, useParams} from "react-router-dom";
 
             <div className="flex justify-center text-center my-8">
                    <Buttons text="Enviar reseña"
-                   onClick={()=> { dispatch(sendReview({points, details,id}))
-                   ;navigate("/ReviewSent")}}/>
-                   
+                   onClick={()=> { dispatch(sendReview({points, details, id}));
+                   navigate("/ReviewSent"); Mixpanel.track(Mixpanel.TYPES.ADD_REVIEW)}}/>
             </div>
         </div>
       </>

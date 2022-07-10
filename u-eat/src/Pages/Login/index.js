@@ -45,8 +45,7 @@ function Login() {
                             }}/>
                         </div>
                     <div className="text-white ">
-                        <p className="mb-2">¿Olvido su Contraseña?</p>
-                        <p href = "/register">¿No se ha registrado? Registrate aqui</p>
+                        <a href="/register" className="text-white text-xl no-underline hover:underline ...">Regístrate aquí</a>
                     </div>
                 </div>
             </div>

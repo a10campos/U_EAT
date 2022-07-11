@@ -1,0 +1,309 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "U Eat - API",
+    "description": "Este es el API del proyecto U Eat",
+    "version": "1.0.0"
+  },
+  "host": "api.ueat.ucr.ac.cr",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/upload": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/registerUser": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Add a user",
+            "schema": {
+              "$ref": "#/definitions/CreateUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/registRest": {
+      "post": {
+        "tags": [
+          "Restaurants"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Add a restaurant",
+            "schema": {
+              "$ref": "#/definitions/CreateRest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/restaurants": {
+      "get": {
+        "tags": [
+          "Restaurants"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/restaurants/{id}": {
+      "get": {
+        "tags": [
+          "Restaurants"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/restaurants/{id}/reviews": {
+      "get": {
+        "tags": [
+          "Restaurants"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/sendReview": {
+      "post": {
+        "tags": [
+          "Reviews"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Add a review to restaurant",
+            "schema": {
+              "$ref": "#/definitions/CreateReview"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateUser": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Johnny"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Depp"
+        },
+        "email": {
+          "type": "string",
+          "example": "johnny@correo.com"
+        },
+        "username": {
+          "type": "string",
+          "example": "johnnyRocks"
+        },
+        "telephone": {
+          "type": "number",
+          "example": 85471222
+        },
+        "password": {
+          "type": "string",
+          "example": "johnnyRocks123"
+        }
+      }
+    },
+    "LoginUser": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "johnny@correo.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "johnnyRocks123"
+        }
+      }
+    },
+    "CreateRest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Johnny Rocket"
+        },
+        "email": {
+          "type": "string",
+          "example": "jrocket@gmail.com"
+        },
+        "phone": {
+          "type": "number",
+          "example": 22541287
+        },
+        "rangePrice": {
+          "type": "string",
+          "example": "2500-7000"
+        },
+        "country": {
+          "type": "string",
+          "example": "Costa Rica"
+        },
+        "province": {
+          "type": "string",
+          "example": "Heredia"
+        },
+        "university": {
+          "type": "string",
+          "example": "UNA"
+        }
+      }
+    },
+    "CreateReview": {
+      "type": "object",
+      "properties": {
+        "stars": {
+          "type": "number",
+          "example": 5
+        },
+        "details": {
+          "type": "string",
+          "example": "Muy buena comida, me encanta"
+        },
+        "restId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    }
+  }
+}

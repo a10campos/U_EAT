@@ -24,17 +24,22 @@ exports.registRest = async (req,res) => {
 exports.getRestaurants = async (req,res) => {
     try{
         var result = [];
-        const params = req.query.filter;
-        if(params){
+        var aux = [];
+        const priceParams = parseInt(req.query.price);
+        const distanceParams = parseInt(req.query.distance);
+        if(!distanceParams && !priceParams){
+            res.json(restaurants);
+        }
+        else {
             underscore.each(restaurants,(rest,i) => {
-                if (rest.province == params){
-                    result.push(rest);
+                const prices = rest.rangePrice.split('-');
+                const price = parseInt(prices[1])
+                if (price <= priceParams){
+                   result.push(rest);
+                    console.log("rest: "+ prices[1]);
                 }
             });
             res.json(result);
-        }
-        else {
-            res.json(restaurants);
         }
     }
     catch(error){

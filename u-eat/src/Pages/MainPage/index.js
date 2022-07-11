@@ -7,16 +7,16 @@ import {Mixpanel} from "../../services/mixpanel"
   export default function MainPage() {
 
     const [restaurants,setRestaurant] = useState([]);
-    const [filter] = useState(" ");
+    const [price,setPrice] = useState("7000");
 
     useEffect(()=>{
       const fetchRestaurants = async () => {
-        const restaurantsFetch = await fetch (`http://localhost:7500/restaurants?filter=${filter}`);
+        const restaurantsFetch = await fetch (`http://localhost:7500/restaurants?price=${price}`);
         const resturantBody = await restaurantsFetch.json();
         setRestaurant(resturantBody);
       }
       fetchRestaurants();
-    },[filter]);
+    },[price]);
 
     return (
         <div>
@@ -44,8 +44,7 @@ import {Mixpanel} from "../../services/mixpanel"
                           <div className= "text-xl ml-4" >
                             <p className="text-2xl font-bold">{i.name}</p>
                             <p> A {i.distance} metros</p> 
-                            <p> ₡{i.rangePrice}</p> 
-                            <p> Valoración: </p> 
+                            <p> ₡{i.rangePrice}</p>
                           </div>      
                         </div>
                      </div>                    

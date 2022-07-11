@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import InputButton from "../../Component/InputButtons";
 import InputText from "../../Component/InputText";
-import PopUp from "../../Component/PopUp";
 import PopUpConf from "../../Component/ConfirmationPopUp";
 import { registRest } from "../../Slices/restaurantSlice";
 import Header from "../../Component/Header";
@@ -18,14 +17,10 @@ function RegisterRest() {
   const [university, setUniversity] = useState("");
 
   const errorMessage = useSelector((state) => state.user.errorMessage);
-  const success = useSelector((state) => state.user.success);
   const dispatch = useDispatch();
 
   return (
     <div className=" h-auto w-screen">
-      {success ? (
-        <PopUp />
-      ) : (
         <div className="flex flex-col items-center bg-fondoPrincipal h-full w-full">
           <Header></Header>
           <div className="flex flex-col text-center h-full w-7/12">
@@ -98,13 +93,6 @@ function RegisterRest() {
                 }}
               />
             </div>
-            <div>
-              <InputButton
-                buttonColor="bg-white"
-                colorText="black"
-                textButton="Agregar Menu"
-              />
-            </div>
             <InputButton
               fOnChange={(evt) => setProductPicture(evt.target.files[0])}
               buttonColor="bg-white"
@@ -122,7 +110,7 @@ function RegisterRest() {
             <div className="mt-4 mb-4">
               <button
                 type="button"
-                className="inline-block px-6 py-2.5 bg-projectMustard text-white text-xl h-16 text-m font-bold rounded-md"
+                className=" flex items-center mb-10 inline-block px-6 py-2.5 bg-projectMustard text-white text-xl h-16 text-m font-bold rounded-md"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModalCenter"
                 onClick={() => {
@@ -151,7 +139,6 @@ function RegisterRest() {
             </div>
           </div>
         </div>
-      )}
     </div>
   );
 }

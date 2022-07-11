@@ -17,12 +17,6 @@ function Perfil (){
             <div className="flex items-center justify-center">
                 <div className="text-center">
                     <div>
-                        <ButtonsIcons colorB="bg-fondoBotonG" text="Informacion de la cuenta" icon={<ImPlus className=" text-xl"/>}/>
-                    </div>
-                    <div>
-                        <ButtonsIcons colorB="bg-fondoBotonG" text="Cambiar Ubicacion" icon={<ImLocation className=" text-xl"/>}/>
-                    </div>
-                    <div>
                         <ButtonsIcons colorB="bg-fondoBotonG" text="Agregar Restaurante" onClick={()=>navigate("/RegisterRest")} icon={<ImPlus className=" text-xl"/>}/>
                     </div>
                     <ButtonsIcons colorB="bg-fondoBotonG" text="Salir" onClick={()=>dispatch (logout())} icon={<ImExit className=" text-xl" />}/>

@@ -3,7 +3,7 @@ import InputText from "../../Component/InputText";
 import Header from "../../Component/Header";
 import  {useEffect, useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
-import {Navigate} from "react-router-dom";
+import {Navigate,Link} from "react-router-dom";
 import {postLogin,logout} from "../../Slices/userSlice";
 function Login() {
 
@@ -33,7 +33,9 @@ function Login() {
     ):(
         <>
             <div className ="flex flex-col items-center justify-center bg-fondoPrincipal  h-screen w-screen">
+                <Link to = "/">
                 <img alt =" Logo app" className=" h-[300px] w-[300px] ml-10 mr-10 mb-3"src="https://i.postimg.cc/PJ0RkZqJ/logo512.png"/>
+                </Link>
                 < div className ="text-center w-7/12">
                     <div className="mb-4">
                         <InputText placeHolder ="Correo" Type="email" values={username}  fOnChange = {(evt) => {setUsername(evt.target.value);}}></InputText>

@@ -33,8 +33,7 @@ exports.getRestaurants = async (req,res) => {
         var result = [];
         var aux = [];
         const priceParams = parseInt(req.query.price);
-        const distanceParams = parseInt(req.query.distance);
-        if(!distanceParams && !priceParams){
+        if(!priceParams){
             res.json(restaurants);
         }
         else {

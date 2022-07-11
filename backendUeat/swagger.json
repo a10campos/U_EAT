@@ -117,7 +117,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "filter",
+            "name": "price",
             "in": "query",
             "type": "string"
           }

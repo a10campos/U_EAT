@@ -5,7 +5,7 @@ const doc = {
     title: "U Eat - API",
     description: "Este es el API del proyecto U Eat",
   },
-  host: "api.ueat.ucr.ac.cr",
+  host: "ueat-api.herokuapp.com/",
   schemes: ["http", "https"],
   definitions: {
     CreateUser: {

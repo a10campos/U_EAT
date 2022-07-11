@@ -15,8 +15,7 @@ export default function Filter() {
 
   return (
     <>
-      <div className="flex  justify-center mt-4">
-        
+      <div className="flex  justify-center mt-4">       
         <button
           type="button"
           className="inline-block px-6 py-2.5 bg-projectMustard text-white text-xl h-16 text-m font-bold leading-tight uppercase rounded shadow-md focus:bg-projectBlue focus:shadow-lg focus:outline-none focus:ring-0 active:bg-projectBlue active:shadow-lg transition duration-150 ease-in-out"

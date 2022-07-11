@@ -1,17 +1,17 @@
 import Header from "../../Component/Header";
-import Buttons from "../../Component/Buttons";
+import PopUpConf from "../../Component/ConfirmationPopUp";
+
+import { Mixpanel } from "../../services/mixpanel";
+
 import { sendReview } from "../../Slices/reviewSlice";
 
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-
-import { Mixpanel } from "../../services/mixpanel";
+import { useParams } from "react-router-dom";
 
 export default function Review() {
   const [stars, setstars] = useState("");
   const [details, setDetails] = useState("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -33,9 +33,9 @@ export default function Review() {
       <Header />
       <div className="h-screen font-sans text-projectBlack w-screen">
         <div className="flex justify-center my-8 mx-4">
-           <p className="text-4xl font-bold text-projectBlack text-center">
-              {restaurant.name}
-            </p>
+          <p className="text-4xl font-bold text-projectBlack text-center">
+            {restaurant.name}
+          </p>
         </div>
 
         <div className="flex justify-center text-center mx-12 my-8">
@@ -62,7 +62,7 @@ export default function Review() {
 
         <div className="flex justify-center text-center">
           <textarea
-          label="Escriba su reseña aquí"
+            label="Escriba su reseña aquí"
             className="px-4 h-[180px] w-[300px] sm:w-96 rounded-md border border-projectBlue"
             value={details}
             onChange={(evt) => {
@@ -70,17 +70,27 @@ export default function Review() {
             }}
           />
         </div>
-
-        <div className="flex justify-center text-center my-8">
-          <Buttons
-            text="Enviar reseña"
+        <div className="flex  justify-center mt-4">
+          <button
+            type="button"
+            className="inline-block px-6 py-2.5 bg-projectMustard text-white text-xl h-16 text-m font-bold rounded-md"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModalCenter"
             onClick={() => {
               dispatch(sendReview({ stars, details, id }));
-              navigate("/ReviewSent");
               Mixpanel.track(Mixpanel.TYPES.ADD_REVIEW);
             }}
-          />
+          >
+            Enviar reseña
+          </button>
         </div>
+            <PopUpConf 
+            title="Reseña enviada"
+            text="¡Su reseña fue enviada con éxito!"
+            link="/"
+            buttonLabel="Volver a la página principal"
+
+            ></PopUpConf>
       </div>
     </>
   );

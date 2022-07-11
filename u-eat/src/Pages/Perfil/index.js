@@ -1,5 +1,4 @@
 import Header from "../../Component/Header"
-import Buttons from "../../Component/Buttons";
 import ButtonsIcons from"../../Component/ButtonIcons";
 import UserInfoCard from "../../Component/UserInfoCard";
 import {ImExit,ImPlus,ImLocation} from "react-icons/im";

@@ -8,8 +8,6 @@ import RegisterRest from "../RegisterRest";
 import MainPage from "../MainPage";
 import Review from "../Review";
 import ReviewSent from "../ReviewSent";
-import Location from "../Location";
-
 
 export default function App() {
   return(
@@ -19,7 +17,6 @@ export default function App() {
       <Route path ="/" element={<MainPage/>}></Route>
       <Route path="/register" element={<Register />}/>
       <Route path="/login" element={<Login/>}/>
-      <Route path ="location" element={<Location/>}></Route>
       <Route path="restaurants/:id" element={<RestaurantInfo/>}></Route>
       <Route element={<PrivateRoute/> }>
         <Route path ="registerRest" element={<RegisterRest/>}></Route>

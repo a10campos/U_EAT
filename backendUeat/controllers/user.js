@@ -17,8 +17,8 @@ exports.loginUser = (req,res) => {
                 ...user,
                 token,
             };
-            console.log(token);
             res.json(result);
+            res.status(204).send("Credenciales correctos");
             return;
         }
     });

@@ -1,30 +1,15 @@
-import Select from "react-select";
 import {useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
 import Buttons from "../../Component/Buttons";
 import InputButton from "../../Component/InputButtons";
 import InputText from "../../Component/InputText";
 import PopUp from "../../Component/PopUp";
-import {registRest,createProduct} from "../../Slices/userSlice";
+import {registRest} from "../../Slices/restaurantSlice";
 import Header from "../../Component/Header";
 
-const options = [
-    {value:"Rapida", label:"Rapida"},
-    {value:"Mexicana", label:"Mexicana"},
-    {value:"Tipica", label:"Tipica"},
-    {value:"China", label:"China"},
-    {value:"Vegetariana",label: "Vegetariana"}
 
-];
-function RegisterRest({
-}) {
+function RegisterRest() {
     const [restuarantPicture,setProductPicture] = useState(null);
-    /*const [product, setProduct] = useState({
-        name: "",
-        description:"",
-        price:0,
-        picture: "",
-    })*/
     const [nameRest,setNameRest] = useState ("");
     const [email,setEmail] = useState ("");
     const [celRest,setCelRest] = useState ("");
@@ -36,12 +21,7 @@ function RegisterRest({
     const errorMessage = useSelector((state) => state.user.errorMessage);
     const success = useSelector((state) => state.user.success);
     const dispatch = useDispatch();
-    /*const handleChange = (field,value)=>{
-        setProduct({
-            ...product,
-            [field]:value,
-        });
-    };*/
+
     return(
         <div className=" h-auto w-screen">
             {success ? (

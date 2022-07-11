@@ -6,7 +6,7 @@ exports.sendReview = async (req,res) => {
         const id = reviews.length+1;
         const newReview = {id,...req.body};
         reviews.push(newReview);
-        res.status(204).send();
+        res.status(204).send("Se registro correctamente la review");
     }
     else {
         res.status(401).json({message:"Faltan campos por completar "});

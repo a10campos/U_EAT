@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import Header from "../../Component/Header";
 import {Link} from "react-router-dom"
-import {chooseLocation} from "../../Slices/locationSlice";
 
 const _countries = require('./countries.json');
 const _states = require('./states.json');
@@ -12,8 +10,6 @@ function Location() {
   const [country, setCountry] = useState([]);
   const [state, setState] = useState([]);
   const [university, setUniversity] = useState([]);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setCountry(_countries);
@@ -89,8 +85,7 @@ function Location() {
       <div className="flex justify-center mx-10 my-3">
         <Link to="/">
           <button className="bg-projectMustard text-white text-3xl 
-            font-bold rounded-md h-[48px] w-80 mt-16 mb-10"   onClick={()=> { dispatch(chooseLocation({
-              country, state, university}));}}>
+            font-bold rounded-md h-[48px] w-80 mt-16 mb-10">
             Aceptar
           </button>
         </Link>

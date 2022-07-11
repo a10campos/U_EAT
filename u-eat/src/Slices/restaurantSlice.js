@@ -11,7 +11,6 @@ const restaurantSlice = createSlice({
             }
             else {
                 state.errorMessage="";
-                state.success=true;
             }
         })
         .addCase(getRestaurants.fulfilled,(state,action) => {
@@ -32,6 +31,16 @@ const restaurantSlice = createSlice({
 
 export const registRest = createAsyncThunk('restuarant/registRest',async(credentils,{getState})=> {
     const state = getState();
+    const formData = new FormData();
+    formData.append ('file',credentils.restuarantPicture);
+    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${state.user.user.token}`,
+        },
+        body: formData,
+    });
+    const uploadFileData = await uploadFileFetch.json();
     const registerRestFetch = await fetch ('http://localhost:7500/registRest',{
         method:'POST',
         headers: {
@@ -42,8 +51,11 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
             name:credentils.nameRest,
             email:credentils.email,
             phone:credentils.celRest,
-            rangePrice: credentils.rangePrice
-
+            rangePrice: credentils.rangePrice,
+            country: credentils.country,
+            province: credentils.province,
+            university: credentils.university,
+            photo: uploadFileData.url
         })
     });
     const userData = await registerRestFetch.json();

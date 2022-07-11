@@ -53,7 +53,7 @@ const userSlice = createSlice({
 export const {logout} = userSlice.actions;
 
 export const postLogin = createAsyncThunk('user/postLogin', async (credentils) => {
-    const loginfetch = await fetch('http://localhost:7500/login',{
+    const loginfetch = await fetch('https://ueat-api.herokuapp.com/login',{
         method:'POST',
         headers: {
             "Content-type": "application/json"
@@ -75,7 +75,7 @@ export const postLogin = createAsyncThunk('user/postLogin', async (credentils) =
 })
 
 export const registerUser = createAsyncThunk('user/registerUser', async (credentils) => {
-    const registerUserfetch = await fetch('http://localhost:7500/registerUser',{
+    const registerUserfetch = await fetch('https://ueat-api.herokuapp.com/registerUser',{
         method:'POST',
         headers: {
             "Content-type": "application/json"

@@ -18,7 +18,7 @@ const reviewSlice = createSlice({
 
 export const sendReview = createAsyncThunk('review/sendReview',async(reviewInfo,{getState})=> {
     const state = getState();
-    const sendReviewFetch = await fetch ('http://localhost:7500/sendReview',{
+    const sendReviewFetch = await fetch ('https://ueat-api.herokuapp.com/sendReview',{
         method:'POST',
         headers: {
             Authorization: `Bearer ${state.user.user.token}`,

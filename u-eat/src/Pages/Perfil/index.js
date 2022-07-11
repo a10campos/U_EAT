@@ -1,7 +1,7 @@
 import Header from "../../Component/Header"
 import ButtonsIcons from"../../Component/ButtonIcons";
 import UserInfoCard from "../../Component/UserInfoCard";
-import {ImExit,ImPlus,ImLocation} from "react-icons/im";
+import {ImExit,ImPlus} from "react-icons/im";
 import {useDispatch} from "react-redux";
 import {logout} from "../../Slices/userSlice";
 import {useNavigate} from "react-router-dom";

@@ -14,22 +14,22 @@ export default function RestaurantInfo() {
   useEffect (()=> {
     const getRestaurantById = async () => {
       const restaurantFetch = await fetch(
-        `http://localhost:7500/restaurants/${id}`
+        `https://ueat-api.herokuapp.com/restaurants/${id}`
       );
       const restaurantData = await restaurantFetch.json();
       setRestaurant(restaurantData);
     };
     getRestaurantById();
-  }, []);
+  }, [id]);
 
     useEffect (()=> {
       const getReviewsById = async () => {
-        const reviewsFetch = await fetch(`http://localhost:7500/restaurants/${id}/reviews`);
+        const reviewsFetch = await fetch(`https://ueat-api.herokuapp.com/restaurants/${id}/reviews`);
         const reviewsData = await reviewsFetch.json();
         setReviews(reviewsData);
       }
       getReviewsById();
-    },[]);
+    },[id]);
   
     let areReviews = false;
 
@@ -72,21 +72,13 @@ export default function RestaurantInfo() {
             </div>
             <div className="flex flex-row justify-center space-x-4">
               <p className=" text-xl font-bold text-projectBlack">Precios:</p>
-              <p className=" text-xl text-projectBlack">{restaurant.lowerPrice}-{restaurant.higherPrice}</p>
+              <p className=" text-xl text-projectBlack">₡{restaurant.rangePrice}</p>
             </div>
-            {/*falta agregar estrellas*/}
+            
           </div>
 
           <div className="flex-col space-y-2 mt-8">
             {/*Div de los botones*/}
-            <div>
-              <button
-                className="h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
-                onClick={() => {}}
-              >
-                Ver menú
-              </button>
-            </div>
             <div>
               <button className="h-[48px]  w-7/12 sm:w-96 rounded-md bg-projectMustard text-white text-lg font-bold"
                 onClick={() => {navigate(`Review`)  }}

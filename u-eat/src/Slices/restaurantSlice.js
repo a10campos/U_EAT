@@ -27,7 +27,7 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
     const state = getState();
     const formData = new FormData();
     formData.append ('file',credentils.restuarantPicture);
-    const uploadFileFetch = await fetch ('http://localhost:7500/upload',{
+    const uploadFileFetch = await fetch ('https://ueat-api.herokuapp.com/upload',{
         method: 'POST',
         headers: {
             Authorization: `Bearer ${state.user.user.token}`,
@@ -35,7 +35,7 @@ export const registRest = createAsyncThunk('restuarant/registRest',async(credent
         body: formData,
     });
     const uploadFileData = await uploadFileFetch.json();
-    const registerRestFetch = await fetch ('http://localhost:7500/registRest',{
+    const registerRestFetch = await fetch ('https://ueat-api.herokuapp.com/registRest',{
         method:'POST',
         headers: {
             Authorization: `Bearer ${state.user.user.token}`,

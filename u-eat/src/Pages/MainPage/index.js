@@ -11,7 +11,7 @@ import {Mixpanel} from "../../services/mixpanel"
 
     useEffect(()=>{
       const fetchRestaurants = async () => {
-        const restaurantsFetch = await fetch (`http://localhost:7500/restaurants?price=${price}`);
+        const restaurantsFetch = await fetch (`https://ueat-api.herokuapp.com/restaurants?price=${price}`);
         const resturantBody = await restaurantsFetch.json();
         setRestaurant(resturantBody);
       }

@@ -20,7 +20,7 @@ export default function Review() {
   useEffect(() => {
     const getRestaurantById = async () => {
       const restaurantFetch = await fetch(
-        `http://localhost:7500/restaurants/${id}`
+        `https://ueat-api.herokuapp.com/restaurants/${id}`
       );
       const restaurantData = await restaurantFetch.json();
       setRestaurant(restaurantData);

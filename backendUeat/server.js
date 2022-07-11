@@ -4,6 +4,7 @@ const cors = require("cors");
 const aws = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
+const swaggerUI = require("swagger-ui-express");
 dotenv.config();
 
 const server = express();
@@ -31,14 +32,22 @@ const upload = multer({
     })
 })
 
+
+
 const userRoutes = require("./routes/user");
 const restRoutes = require("./routes/restaurant");
 const reviewRoutes = require("./routes/review");
+
+const swaggerFile = require('./swagger.json')
 
 //Mount Routes 
 server.use(userRoutes);
 server.use(restRoutes);
 server.use(reviewRoutes);
+
+//Documentation setup
+server.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
+
 
 server.post("/upload",upload.single("file"), function(req, res){
     const file = req.file;
@@ -52,4 +61,7 @@ server.post("/upload",upload.single("file"), function(req, res){
 });
 
 server.listen(process.env.PORT||7500);
-console.log(`Server running at http://localhost:${process.env.PORT || 7500}`)
+console.log(
+    `The server is running at http://localhost:${process.env.PORT || 7500}
+     You can find the docs at http://localhost:${process.env.PORT || 7500}/docs`
+  );

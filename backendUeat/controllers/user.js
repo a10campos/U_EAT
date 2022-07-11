@@ -4,6 +4,12 @@ const underscore = require("underscore");
 
 
 exports.loginUser = (req,res) => {
+    // #swagger.tags = ['Users']
+          /*  #swagger.parameters['obj'] = {
+                in: 'body',
+                description: 'Login',
+                schema: { $ref: '#/definitions/LoginUser' }
+        } */
     var encontro = false;
     const userPayload = req.body;
 
@@ -28,6 +34,12 @@ exports.loginUser = (req,res) => {
 } ;
 
 exports.registerUser = async (req,res) => {
+    // #swagger.tags = ['Users']
+      /*  #swagger.parameters['obj'] = {
+                in: 'body',
+                description: 'Add a user',
+                schema: { $ref: '#/definitions/CreateUser' }
+        } */
     const {name, lastName, email, username, telephone, password} = req.body;
     if (name && lastName && email && username && telephone && password) {
         let mailTaken = false;

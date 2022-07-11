@@ -5,6 +5,12 @@ const { sendWelcomeEmail } = require('../services/mailService');
 const { find } = require('underscore');
 
 exports.registRest = async (req,res) => {
+    // #swagger.tags = ['Restaurants']
+      /*  #swagger.parameters['obj'] = {
+                in: 'body',
+                description: 'Add a restaurant',
+                schema: { $ref: '#/definitions/CreateRest' }
+        } */
     const {name, email,phone,rangePrice,country,province,university} = req.body;
     if (name && email && phone && rangePrice && country && province && university) {
         const id = restaurants.length+1;
@@ -22,6 +28,7 @@ exports.registRest = async (req,res) => {
 };
 
 exports.getRestaurants = async (req,res) => {
+    // #swagger.tags = ['Restaurants']
     try{
         var result = [];
         const params = req.query.filter;
@@ -42,6 +49,7 @@ exports.getRestaurants = async (req,res) => {
     }
 };
 exports.getRestaurantById = async (req,res) => {
+    // #swagger.tags = ['Restaurants']
     try{
         const restId = parseInt(req.params.id);
         underscore.each(restaurants,(rest,i) => {
@@ -57,6 +65,7 @@ exports.getRestaurantById = async (req,res) => {
 };
 
 exports.getReviewByRestaurant = async (req,res) => {
+    // #swagger.tags = ['Restaurants']
     try {
         const restId = parseInt(req.params.id);
         const result =[];

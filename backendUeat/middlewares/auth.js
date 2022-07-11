@@ -1,5 +1,4 @@
 const jwt = require ("jsonwebtoken");
-const {searchUser } = require("../models.js");
 const users = require('../example.json');
 const underscore = require("underscore");
 

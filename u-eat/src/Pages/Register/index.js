@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser, logout } from "../../Slices/userSlice";
 import { Navigate } from "react-router-dom";
 import InputText from "../../Component/InputText";
-import Buttons from "../../Component/Buttons";
 import PopUpConf from "../../Component/ConfirmationPopUp";
 
 export default function Register() {

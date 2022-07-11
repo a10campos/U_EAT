@@ -26,7 +26,7 @@ export default function Review() {
       setRestaurant(restaurantData);
     };
     getRestaurantById();
-  }, []);
+  }, [id]);
 
   return (
     <>

@@ -7,7 +7,7 @@ import PopUpConf from "../../Component/ConfirmationPopUp";
 import { registRest } from "../../Slices/restaurantSlice";
 import Header from "../../Component/Header";
 
-function RegisterRest({}) {
+function RegisterRest() {
   const [restuarantPicture, setProductPicture] = useState(null);
   const [nameRest, setNameRest] = useState("");
   const [email, setEmail] = useState("");
